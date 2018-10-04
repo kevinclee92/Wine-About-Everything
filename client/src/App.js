@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
@@ -18,21 +16,21 @@ import UserPage from "./pages/UserPage";
 
 class App extends Component {
 
-  state = {
-    user: {
-      loggedIn: false,
-      username: null,
-    }
-  }
+  // state = {
+  //   user: {
+  //     loggedIn: false,
+  //     username: null,
+  //   }
+  // }
 
-  fetchUser = () => {
-    return true
-  }
+  // fetchUser = () => {
+  //   return true
+  // }
 
-  componentDidMount() {
-    this.fetchUser()
-    .then(user => this.setState({ user: { loggedIn: true }}))
-  }
+  // componentDidMount() {
+  //   this.fetchUser()
+  //   .then(user => this.setState({ user: { loggedIn: true }}))
+  // }
 
   render() {
     return (
@@ -46,8 +44,8 @@ class App extends Component {
               <Route path="/user/:username" component={UserPage} />
               <Route component={NoMatch} />
             </Switch>
-        </div>
         <Footer />
+        </div>
     </Router>
 );
 }}

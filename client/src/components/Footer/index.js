@@ -9,10 +9,10 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 const Footer = () => (
   <footer>
     <BottomNavigation
-        value={value}
-        onChange={this.handleChange}
-        showLabels
-        className={classes.root}
+        // value={value}
+        // onChange={this.handleChange}
+        // showLabels
+        // className={classes.root}
       >
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
