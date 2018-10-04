@@ -11,10 +11,10 @@ const Header = () => (
   <header>
     <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+          <IconButton  color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit" className={classes.grow}>
+          <Typography variant="title" color="inherit" >
             News
           </Typography>
           <Button color="inherit">Login</Button>
