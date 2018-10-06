@@ -5,19 +5,19 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import styles from './headerStyle.css';
 
 const Header = () => (
   <header>
     <AppBar position="static">
         <Toolbar>
-          <IconButton  color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="title" color="inherit" >
-            News
+            Final Project
           </Typography>
-          <Button color="inherit">Login</Button>
+          <ul style={{listStyleType: "none", margin: 0, padding: 0}}>
+            <li><Button color="inherit">Login</Button></li>
+            <li><Button color="inherit">Create Account</Button></li>
+          </ul>
         </Toolbar>
       </AppBar>
   </header>
