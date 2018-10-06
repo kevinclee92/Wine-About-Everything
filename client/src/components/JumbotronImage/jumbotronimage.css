@@ -1,0 +1,24 @@
+.wrap {
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: 650px;
+}
+
+.titleDescription {
+    position: absolute;
+    right: 70px;
+    top: 100px;
+    width: 50%;
+}
+
+h1 {
+    font-size: 80px;
+    text-align: left;
+}
+
+p {
+    text-align: left;
+}

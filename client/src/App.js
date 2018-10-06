@@ -37,7 +37,6 @@ class App extends Component {
 
       <Router>
         <div>
-          <Nav />
           <Header />
             <Switch>
               <Route exact path="/" component={HomePage} />
