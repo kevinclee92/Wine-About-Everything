@@ -13,6 +13,7 @@ import {
 
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
+import Notes from "./pages/Notes";
 
 class App extends Component {
 
@@ -40,7 +41,8 @@ class App extends Component {
           <Header />
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/user/:username" component={UserPage} />
+              <Route path="/user" component={UserPage} />
+              <Route path="/notes" component={Notes} />
               <Route component={NoMatch} />
             </Switch>
         <Footer />
