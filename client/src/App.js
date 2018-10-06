@@ -14,15 +14,16 @@ import {
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
 import Notes from "./pages/Notes";
+import LoginPage from "./pages/LoginPage";
 
 class App extends Component {
 
-  // state = {
-  //   user: {
-  //     loggedIn: false,
-  //     username: null,
-  //   }
-  // }
+  state = {
+    user: {
+      loggedIn: false,
+      username: null,
+    }
+  }
 
   // fetchUser = () => {
   //   return true
@@ -38,14 +39,12 @@ class App extends Component {
 
       <Router>
         <div>
-          <Header />
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/user" component={UserPage} />
               <Route path="/notes" component={Notes} />
               <Route component={NoMatch} />
             </Switch>
-        <Footer />
         </div>
     </Router>
 );
