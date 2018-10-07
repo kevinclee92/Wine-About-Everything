@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NoMatch from "./pages/NoMatch";
+import Detail from "./pages/Detail";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -41,8 +42,9 @@ class App extends Component {
         <div>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/user" component={UserPage} />
+              <Route path="/users/:userid" component={UserPage} />
               <Route path="/notes" component={Notes} />
+              <Route exact path="/notes/:id" component={Detail} />
               <Route component={NoMatch} />
             </Switch>
         </div>
