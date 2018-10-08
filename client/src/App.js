@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NoMatch from "./pages/NoMatch";
+import Detail from "./pages/Detail";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,8 +14,10 @@ import {
 
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
-import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage";
+import Notes from "./pages/Notes";
+import LoginPage from "./pages/LoginPage";
+
 
 class App extends Component {
 
@@ -41,8 +44,10 @@ class App extends Component {
         <div>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/user/:username" component={UserPage} />
               <Route path="/register" component={RegisterPage} />
+              <Route path="/users/:userid" component={UserPage} />
+              <Route path="/notes" component={Notes} />
+              <Route exact path="/notes/:id" component={Detail} />
               <Route component={NoMatch} />
             </Switch>
         </div>
