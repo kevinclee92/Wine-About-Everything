@@ -6,30 +6,32 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
 
-class Books extends Component {
+class Notes extends Component {
   state = {
-    books: [],
+    notes: [],
     title: "",
     author: "",
     synopsis: ""
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadNotes();
   }
 
-  loadBooks = () => {
-    API.getBooks()
+  loadNotes = () => {
+    API.getNotes()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ notes: res.data, title: "", author: "", synopsis: "" })
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+  deleteNote = id => {
+    API.deleteNote(id)
+      .then(res => this.loadNotes())
       .catch(err => console.log(err));
   };
 
@@ -43,12 +45,12 @@ class Books extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.title && this.state.author) {
-      API.saveBook({
+      API.saveNote({
         title: this.state.title,
         author: this.state.author,
         synopsis: this.state.synopsis
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadNotes())
         .catch(err => console.log(err));
     }
   };
@@ -56,6 +58,7 @@ class Books extends Component {
   render() {
     return (
       <Container fluid>
+      <Nav />
         <Row>
           <Col size="md-6">
             <Jumbotron>
@@ -90,18 +93,18 @@ class Books extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+              <h1>Notes On My List</h1>
             </Jumbotron>
-            {this.state.books.length ? (
+            {this.state.notes.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {this.state.notes.map(note => (
+                  <ListItem key={note._id}>
+                    <Link to={"/notes/" + note._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {note.title} by {note.author}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    <DeleteBtn onClick={() => this.deleteNote(note._id)} />
                   </ListItem>
                 ))}
               </List>
@@ -110,9 +113,10 @@ class Books extends Component {
             )}
           </Col>
         </Row>
+        <Footer />
       </Container>
     );
   }
 }
 
-export default Books;
+export default Notes;
