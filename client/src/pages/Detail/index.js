@@ -23,7 +23,7 @@ class Detail extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {this.state.note.title} by {this.state.note.author}
+                {this.state.note.title} by {this.state.note.discription}
               </h1>
             </Jumbotron>
           </Col>
@@ -38,7 +38,7 @@ class Detail extends Component {
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/">← Back to Notes</Link>
           </Col>
         </Row>
       </Container>
