@@ -14,6 +14,7 @@ import {
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
 import LoginPage from "./pages/LoginPage"
+import RegisterPage from "./pages/RegisterPage";
 
 class App extends Component {
 
@@ -41,6 +42,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/user/:username" component={UserPage} />
+              <Route path="/register" component={RegisterPage} />
               <Route component={NoMatch} />
             </Switch>
         </div>
