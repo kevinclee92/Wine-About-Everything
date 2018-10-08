@@ -8,6 +8,8 @@ export default class LoginForm extends React.Component {
     render () {
         return (
             <form>
+                <br />
+                <br />
                 <TextField id="standard-password-input"
                 label="Username"
                 type="username"
@@ -20,12 +22,12 @@ export default class LoginForm extends React.Component {
                 type="password"
                 autoComplete="current-password"
                 margin="normal"/>
-                <br />
+                <br /><br />
                 <Button variant="contained" color="primary" style={{marginRight: "10px"}}>
                     Login
                 </Button>
                 <Button variant="contained" color="primary">
-                    Register
+                    Create Account
                 </Button>
             </form>
         );
