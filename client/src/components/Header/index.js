@@ -9,16 +9,16 @@ import styles from './headerStyle.css';
 
 const Header = () => (
   <header>
-    <AppBar position="static">
-        <Toolbar>
-          <Typography variant="title" color="inherit" >
-            Final Project
+    <AppBar className='jumbo valign-wrapper' position="static">    
+        {/* <Toolbar className='container header-background'>        
+          <Typography className='grey-text text-lighten-2 center header' variant="title" color="inherit" >
+            Wine about Everything!
           </Typography>
           <ul style={{listStyleType: "none", margin: 0, padding: 0}}>
-            <li><Button color="inherit">Login</Button></li>
-            <li><Button color="inherit">Create Account</Button></li>
+            <li><Button color="inherit">Notes</Button></li>
+            <li><Button color="inherit">Logout</Button></li>
           </ul>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
   </header>
 );

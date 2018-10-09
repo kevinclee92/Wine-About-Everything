@@ -5,6 +5,7 @@ import SearchFormWine from '../../components/SearchFormWine';
 const SearchPage = () => {
     return (
         <div>
+            <Header />
             <Jumbotron>
                 Search Wines
                 <SearchFormWine>
