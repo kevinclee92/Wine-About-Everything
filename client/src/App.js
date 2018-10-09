@@ -4,6 +4,7 @@ import Detail from "./pages/Detail";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SearchFormWine from "./components/SearchFormWine";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,6 +18,7 @@ import UserPage from "./pages/UserPage";
 import RegisterPage from "./pages/RegisterPage";
 import Notes from "./pages/Notes";
 import LoginPage from "./pages/LoginPage";
+import SearchPage from "./pages/SearchPage";
 
 
 class App extends Component {
@@ -46,6 +48,7 @@ class App extends Component {
               <Route exact path="/" component={HomePage} />
               <Route path="/register" component={RegisterPage} />
               <Route path="/users/:userid" component={UserPage} />
+              <Route path="/search" component={SearchPage} />
               <Route path="/notes" component={Notes} />
               <Route exact path="/notes/:id" component={Detail} />
               <Route component={NoMatch} />

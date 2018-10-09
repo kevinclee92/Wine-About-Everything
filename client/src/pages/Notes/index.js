@@ -13,7 +13,7 @@ class Notes extends Component {
   state = {
     notes: [],
     title: "",
-    author: "",
+    discription: "",
     synopsis: ""
   };
 
@@ -24,7 +24,7 @@ class Notes extends Component {
   loadNotes = () => {
     API.getNotes()
       .then(res =>
-        this.setState({ notes: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ notes: res.data, title: "", discription: "", synopsis: "" })
       )
       .catch(err => console.log(err));
   };
@@ -44,10 +44,10 @@ class Notes extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
+    if (this.state.title && this.state.discription) {
       API.saveNote({
         title: this.state.title,
-        author: this.state.author,
+        discription: this.state.discription,
         synopsis: this.state.synopsis
       })
         .then(res => this.loadNotes())
@@ -72,10 +72,10 @@ class Notes extends Component {
                 placeholder="Title (required)"
               />
               <Input
-                value={this.state.author}
+                value={this.state.discription}
                 onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
+                name="discription"
+                placeholder="Discription (required)"
               />
               <TextArea
                 value={this.state.synopsis}
@@ -84,7 +84,7 @@ class Notes extends Component {
                 placeholder="Synopsis (Optional)"
               />
               <FormBtn
-                disabled={!(this.state.author && this.state.title)}
+                disabled={!(this.state.discription && this.state.title)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Book
@@ -101,7 +101,7 @@ class Notes extends Component {
                   <ListItem key={note._id}>
                     <Link to={"/notes/" + note._id}>
                       <strong>
-                        {note.title} by {note.author}
+                        {note.title} by {note.discription}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteNote(note._id)} />
