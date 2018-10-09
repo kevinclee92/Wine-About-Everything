@@ -5,15 +5,18 @@ import JumbotronImage from '../../components/JumbotronImage'
 import styles from './homepageStyle.css'
 import LoginForm from '../../components/LoginForm'
 
-const HomePage = () => {
-    return (
-    <div>
-        <Jumbotron>
-            <JumbotronImage />     
-        </Jumbotron>
-    </div>
-    )
+export default class HomePage extends React.Component {
+
+    render () {
+        return (
+            <div>
+                <Jumbotron>
+                    <JumbotronImage />     
+                </Jumbotron>
+            </div>
+        )
+        
+    }
     
 }
 
-export default HomePage;

@@ -1,24 +1,74 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import API from '../../utils/API';
 
 
-
-
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+    },
+    dense: {
+      marginTop: 16,
+    },
+    menu: {
+      width: 200,
+    },
+  });
 export default class RegisterForm extends React.Component {
 
     state = {
         user: {
             username: "",
             password: "",
+            name: "",
             phone: "",
             street: "",
             city: "",
             state: "",
-            zip: "",
+            zipcode: "",
             email: "",
             age: ""
         }
     }
+
+    handleInputChange = event => {
+        var user = this.state.user;
+        const { name, value } = event.target;
+        user[name] = value;
+        this.setState({
+            user
+        })
+    };
+
+    componentDidMount() {
+        console.log(this.props);
+    }
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+
+        console.log(this.props);
+        API.saveUser({
+            username: this.state.user.username,
+            password: this.state.user.password,
+            phone: this.state.user.phone,
+            street: this.state.user.street,
+            city: this.state.user.city,
+            state: this.state.user.state,
+            zip: this.state.user.zip,
+            email: this.state.user.email,
+            age: this.state.user.age
+        })
+        .then(console.log(this.state.user));
+    }
+
+    
 
 
 
@@ -28,63 +78,104 @@ export default class RegisterForm extends React.Component {
             <form>
                 <h3>Login Info</h3>
                 <TextField
-                    id="standard-with-placeholder"
+                    id="username"
                     label="Username"
                     margin="normal"
+                    name="username"
+                    value={this.state.user.username}
+                    onChange={this.handleInputChange}
+                    required={true}
                 />
                 <TextField
-                    id="standard-password-input"
+                    id="password"
                     label="Password"
                     type="password"
                     autoComplete="current-password"
                     margin="normal"
+                    name="password"
+                    value={this.state.user.password}
+                    onChange={this.handleInputChange}
+                    required={true}
                 />
                 <TextField
-                    id="standard-with-placeholder"
+                    id="email"
                     label="Email"
                     placeholder="johndoe@example.com"
                     margin="normal"
+                    name="email"
+                    value={this.state.user.email}
+                    onChange={this.handleInputChange}
+                    required={true}
                 />
                 <TextField
-                    id="standard-number"
+                    id="name"
+                    label="Name"
+                    margin="normal"
+                    name="name"
+                    value={this.state.user.name}
+                    onChange={this.handleInputChange}
+                    required={true}
+                />
+                <TextField
+                    id="age"
                     label="Age"
                     type="number"
                     margin="normal"
+                    name="age"
+                    value={this.state.user.age}
+                    onChange={this.handleInputChange}
+                    required={true}
                 />
                  <TextField
-                    id="standard-with-placeholder"
+                    id="phone"
                     label="Phone Number"
                     type="number"
                     margin="normal"
                     placeholder="XXX-XXX-XXXX"
+                    name="phone"
+                    value={this.state.user.phone}
+                    onChange={this.handleInputChange}
                 />
                 
                 
                 <h3>Address</h3>
                 <TextField
-                    id="standard-with-placeholder"
+                    id="street"
                     label="Street"
-                    placeholder="Placeholder"
                     margin="normal"
+                    name="street"
+                    value={this.state.user.street}
+                    onChange={this.handleInputChange}
                 />
                 <TextField
-                    id="standard-with-placeholder"
+                    id="city"
                     label="City"
-                    placeholder="Placeholder"
                     margin="normal"
+                    name="city"
+                    value={this.state.user.city}
+                    onChange={this.handleInputChange}
                 />
                 <TextField
-                    id="standard-with-placeholder"
+                    id="state"
                     label="State"
-                    placeholder="Placeholder"
                     margin="normal"
+                    name="state"
+                    value={this.state.user.state}
+                    onChange={this.handleInputChange}
                 />
                 <TextField
-                    id="standard-number"
+                    id="zipcode"
                     label="Zipcode"
                     type="number"
                     margin="normal"
+                    name="zipcode"
+                    value={this.state.user.zipcode}
+                    onChange={this.handleInputChange}
                 />
+
+                <Button onClick={this.handleFormSubmit} variant="contained" color="primary">
+                    Create Account
+                </Button>
                 
             </form>
         );

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 
 export default class LoginForm extends React.Component {
 
+
     render () {
         return (
             <form>
@@ -23,10 +24,10 @@ export default class LoginForm extends React.Component {
                 autoComplete="current-password"
                 margin="normal"/>
                 <br /><br />
-                <Button variant="contained" color="primary" style={{marginRight: "10px"}}>
+                <Button type="submit" variant="contained" color="primary" style={{marginRight: "10px"}}>
                     Login
                 </Button>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" href="/register">
                     Create Account
                 </Button>
             </form>
