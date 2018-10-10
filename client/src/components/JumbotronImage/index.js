@@ -3,7 +3,7 @@ import img from "../../images/homepageImage.jpeg"
 import styles from "./jumbotronimage.css"
 import LoginForm from "../LoginForm"
 
-const JumbotronImage = () => (
+const JumbotronImage = (props) => (
   <div className="wrap">
       <img className="image" src={img} alt="HomePage Image"/>
       <div className="titleDescription">

@@ -12,7 +12,7 @@ const UserSchema = new Schema({
   street: {type: String},
   city: {type: String},
   state: {type: String},
-  zip: {type: String},
+  zipcode: {type: String},
   email: {type: String},
   age: {type: Number},
   date: { type: Date, default: Date.now }
