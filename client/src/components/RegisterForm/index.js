@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import API from '../../utils/API';
+import { withRouter } from 'react-router-dom';
 
 
 const styles = theme => ({
@@ -20,7 +21,7 @@ const styles = theme => ({
       width: 200,
     },
   });
-export default class RegisterForm extends React.Component {
+class RegisterForm extends React.Component {
 
     state = {
         user: {
@@ -34,6 +35,14 @@ export default class RegisterForm extends React.Component {
             zipcode: "",
             email: "",
             age: ""
+        },
+        redirect: false
+    }
+
+    handleRedirect = () => {
+        if (this.state.redirect) {
+            console.log("working")
+            this.props.history.push('/')
         }
     }
 
@@ -42,7 +51,8 @@ export default class RegisterForm extends React.Component {
         const { name, value } = event.target;
         user[name] = value;
         this.setState({
-            user
+            user,
+            redirect: false
         })
     };
 
@@ -52,7 +62,9 @@ export default class RegisterForm extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        var currentState = this.state;
+        currentState.redirect = true;
+        this.setState({currentState})
         console.log(this.props);
         API.saveUser({
             username: this.state.user.username,
@@ -65,7 +77,9 @@ export default class RegisterForm extends React.Component {
             email: this.state.user.email,
             age: this.state.user.age
         })
-        .then(console.log(this.state.user));
+        .then(
+            this.props.history.push("/")
+        );
     }
 
     
@@ -74,7 +88,7 @@ export default class RegisterForm extends React.Component {
 
     render () {
         return (
-            
+         
             <form>
                 <h3>Login Info</h3>
                 <TextField
@@ -177,7 +191,12 @@ export default class RegisterForm extends React.Component {
                     Create Account
                 </Button>
                 
+                <Button variant="contained" color="primary" href="/">
+                    Go Back
+                </Button>
             </form>
         );
     }
 }
+
+export default withRouter(RegisterForm);

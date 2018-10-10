@@ -45,8 +45,8 @@ class App extends Component {
       <Router>
         <div>
             <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/register" component={RegisterPage} />
+              <Route exact path="/" component={HomePage}/>
+              <Route path="/register" render={props => <RegisterPage {...props}/>}/>
               <Route path="/users/:userid" component={UserPage} />
               <Route path="/search" component={SearchPage} />
               <Route path="/notes" component={Notes} />
