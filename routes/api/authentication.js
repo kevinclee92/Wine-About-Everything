@@ -5,7 +5,7 @@ var User = require('../../models/user');
 
 
 module.exports = function (passport) {
-    router.post('/register', function (req, res) {
+    router.post('/api/users', function (req, res) {
         var body = req.body,
             username = body.username,
             password = body.password,
@@ -14,7 +14,7 @@ module.exports = function (passport) {
             street = body.street,
             city = body.city,
             state = body.state,
-            zip = body.zip,
+            zipcode = body.zipcode,
             email = body.email,
             age = body.age,
             date = body.date
@@ -30,12 +30,22 @@ module.exports = function (passport) {
                 } else {
                     var record = new User()
                     record.username = username;
-                    record.password = record.hashPassword(password)
+                    record.password = record.hashPassword(password);
+                    record.name = name;
+                    record.phone = phone;
+                    record.street = street;
+                    record.city = city;
+                    record.state = state;
+                    record.zipcode = zipcode;
+                    record.email = email;
+                    record.age = age;
+                    record.date = date;
+
                     record.save(function (err, user) {
                         if (err) {
                             res.status(500).send('db error')
                         } else {
-                            res.redirect('/users/:userid')
+                            res.redirect('/users')
                         }
                     })
                 }
@@ -43,12 +53,4 @@ module.exports = function (passport) {
         })
     });
 
-
-    router.post('/', passport.authenticate('local', {
-        failureRedirect: '/',
-        successRedirect: '/users/:userid',
-    }), function (req, res) {
-        res.send('hey')
-    })
-    return router;
 };

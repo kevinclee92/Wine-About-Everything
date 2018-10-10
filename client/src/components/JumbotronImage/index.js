@@ -9,10 +9,11 @@ const JumbotronImage = (props) => (
       <div className="titleDescription">
         <h1>WINE AND FRIENDS</h1>
         <div className="login">
-          <LoginForm />
+          <LoginForm props={this.props}/>
         </div>
+        <h3>Contributors</h3>
         <p>
-        Nam sit amet est convallis, dictum tortor a, porttitor mi. Sed mi urna, tincidunt sit amet placerat ut, molestie quis leo. Aliquam laoreet metus vitae iaculis imperdiet. Nulla facilisi. Sed eu tellus non metus facilisis aliquam. Etiam eget sapien convallis, viverra arcu id, placerat sem. Mauris tincidunt porttitor augue non blandit. Morbi vel mauris tincidunt, rhoncus eros a, facilisis nunc. Praesent bibendum, justo sed commodo facilisis, dui eros egestas lorem, cursus maximus neque lacus ut nunc.
+        Kevin Lee, Clint Buchhauser, Justin Campbell, Armando Silva, Charles Towle
         </p>
       </div>
   </div>
