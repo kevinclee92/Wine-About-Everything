@@ -1,12 +1,54 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the Notes collection and inserts the books below
+// This file empties the Users and Notes collection and inserts the users and notes below
 
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/wines101"
 );
+
+
+const userSeed = [
+  {
+    username: "Stephen King",
+    password: "12345",
+    name: "Stephen",
+    phone: "619123456",
+    street: "123 Four Steet",
+    city: "Lemon Grove",
+    state: "Ca",
+    zipcode: "91945",
+    email: "sum1kool@yahoo.com",
+    age: 22,
+    date: new Date(Date.now())
+  },
+  {
+    username: "Test",
+    password: "test",
+    name: "Test",
+    phone: "619123456",
+    street: "567 Eight Steet",
+    city: "Lemon Grove",
+    state: "Ca",
+    zipcode: "91945",
+    email: "sum1new@yahoo.com",
+    age: 23,
+    date: new Date(Date.now())
+  }
+]
+
+db.User
+  .remove({})
+  .then(() => db.User.collection.insertMany(userSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
 const noteSeed = [
   {
@@ -135,41 +177,3 @@ db.Note
     process.exit(1);
   });
 
-const userSeed = [
-  {
-    username: "Stephen King",
-    password: "12345",
-    phone: "619123456",
-    street: "123 Four Steet",
-    city: "Lemon Grove",
-    state: "Ca",
-    zip: "91945",
-    email: "sum1kool@yahoo.com",
-    age: 22,
-    date: new Date(Date.now())
-  },
-  {
-    username: "Test",
-    password: "test",
-    phone: "619123456",
-    street: "567 Eight Steet",
-    city: "Lemon Grove",
-    state: "Ca",
-    zip: "91945",
-    email: "sum1new@yahoo.com",
-    age: 23,
-    date: new Date(Date.now())
-  }
-]
-
-db.User
-  .remove({})
-  .then(() => db.User.collection.insertMany(userSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });

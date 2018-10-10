@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
+import Jumbotronimage from '../../components/JumbotronImage';
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 
@@ -9,13 +10,11 @@ class UserPage extends Component {
     }
 
     componentDidMount() {
-        API.getUser(this.props.match.params.id) 
-        // console.log(API.getUser(this.props.match.params.id));
-        
+        API.getUser(this.props.match.params.userid) 
         .then(res => this.setState({user: res.data}))
       }
 
-        
+            
     render() {
     return (
         <div>
