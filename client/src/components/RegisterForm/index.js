@@ -65,10 +65,11 @@ class RegisterForm extends React.Component {
         var currentState = this.state;
         currentState.redirect = true;
         this.setState({currentState})
-        console.log(this.props);
+        
         API.saveUser({
             username: this.state.user.username,
             password: this.state.user.password,
+            name: this.state.user.name,
             phone: this.state.user.phone,
             street: this.state.user.street,
             city: this.state.user.city,
@@ -81,10 +82,6 @@ class RegisterForm extends React.Component {
             this.props.history.push("/")
         );
     }
-
-    
-
-
 
     render () {
         return (

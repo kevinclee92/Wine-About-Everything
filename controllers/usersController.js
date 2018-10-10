@@ -9,9 +9,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findOne: function() {
-
-  },
+  
   findById: function(req, res) {
     db.User
       .findById(req.params.id)
@@ -19,10 +17,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.User
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      
+      
+        db.User
+        .create(req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    
   },
   update: function(req, res) {
     db.User
@@ -34,6 +35,12 @@ module.exports = {
     db.User
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findOne: function(req, res) {
+    db.User
+      .findOne({username: req.params.username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
