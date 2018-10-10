@@ -21,6 +21,7 @@ const userSeed = [
     zipcode: "91945",
     email: "sum1kool@yahoo.com",
     age: 22,
+    image: "https://imagesvc.timeincapp.com/v3/fan/image?url=https%3A%2F%2F1428elm.com%2Ffiles%2F2018%2F01%2FStephen-King-Courtesy-of-BookBub-Blog.jpg&c=sc&w=850&h=560",
     date: new Date(Date.now())
   },
   {
@@ -34,6 +35,7 @@ const userSeed = [
     zipcode: "91945",
     email: "sum1new@yahoo.com",
     age: 23,
+    image: "http://epmgaa.media.clients.ellingtoncms.com/img/photos/2013/08/19/Dave_Chapelle_t580.jpg?8f1b5874916776826eb17d7e67de7278c987ca33",
     date: new Date(Date.now())
   }
 ]

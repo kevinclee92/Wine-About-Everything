@@ -7,7 +7,7 @@ const JumbotronImage = (props) => (
   <div className="wrap">
       <img className="image" src={img} alt="HomePage Image"/>
       <div className="titleDescription">
-        <h1>WINE AND FRIENDS</h1>
+        <h1>WINE ABOUT EVERYTHING!</h1>
         <div className="login">
           <LoginForm props={this.props}/>
         </div>

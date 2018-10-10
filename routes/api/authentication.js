@@ -45,7 +45,7 @@ module.exports = function (passport) {
                         if (err) {
                             res.status(500).send('db error')
                         } else {
-                            res.redirect('/users')
+                            res.redirect('/users/:userid')
                         }
                     })
                 }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
-import Jumbotronimage from '../../components/JumbotronImage';
+import Avatar from '@material-ui/core/Avatar';
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
+import styles from './userpage.css';
 
 class UserPage extends Component {
     state = {
@@ -20,7 +21,10 @@ class UserPage extends Component {
         <div>
         <Header />
         <Container fluid>
-            <h1>UserPage {this.state.user.name}</h1>
+            <h3>Welcome {this.state.user.name}</h3>
+            <div className="avatar">
+            <Avatar style={{height:60, width:60}} src={this.state.user.image}/>
+            </div>
         </Container>
         </div>
     )
