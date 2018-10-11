@@ -15,6 +15,7 @@ const UserSchema = new Schema({
   zipcode: {type: String},
   email: {type: String},
   age: {type: Number},
+  image: {data: Buffer, contentType: String},
   date: { type: Date, default: Date.now }
 });
 
