@@ -11,12 +11,11 @@ export default class HomePage extends React.Component {
         return (
             <div>
                 <Jumbotron>
-                    <JumbotronImage props={this.props}/>     
-                </Jumbotron>
+                    <JumbotronImage props={this.props}/>  
+                    </Jumbotron>
             </div>
         )
         
     }
     
 }
-
