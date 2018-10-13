@@ -7,14 +7,15 @@ var Schema = mongoose.Schema;
 const UserSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
-  name: {type: String, required: true},
+  name: {type: String},
   phone: {type: String},
   street: {type: String},
   city: {type: String},
   state: {type: String},
-  zip: {type: String},
+  zipcode: {type: String},
   email: {type: String},
   age: {type: Number},
+  image: {data: Buffer, contentType: String},
   date: { type: Date, default: Date.now }
 });
 
