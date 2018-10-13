@@ -30,12 +30,28 @@ const styles = theme => ({
     },
 });
 
+const wineColors = [
+    {value: 'Red', label: 'Red'},
+    {value: 'White', label: 'White'},
+];
+
 const countries = [
     {value: '', label: 'None'},
-    {value: 'USA', label: 'USA'},
+    {value: 'Italy', label: 'Italy'},
     {value: 'France', label: 'France'},
     {value: 'Spain', label: 'Spain'},
+    {value: 'USA', label: 'USA'},
+    {value: 'Australia', label: 'Australia'},
+    {value: 'Argentina', label: 'Argentina'},
+    {value: 'China', label: 'China'},
     {value: 'South Africa', label: 'South Africa'},
+    {value: 'Chile', label: 'Chile'},
+    {value: 'Germany', label: 'Germany'},
+    {value: 'Portugal', label: 'Portugal'},
+    {value: 'Russia', label: 'Russia'},
+    {value: 'Romania', label: 'Romania'},
+    {value: 'Brazil', label: 'Brazil'},
+    {value: 'Hungary', label: 'Hungary'},
 ];
 
 const wineTypes = [
@@ -55,6 +71,11 @@ export default class SearchFormWine extends React.Component {
     state = {
         wineType: '',
         country: '',
+        wineColor: '',
+        wineColor: '',
+        wineColor: '',
+        wineColor: '',
+        wineColor: '',
     };
 
     handleChange = name => event => {
@@ -68,47 +89,50 @@ export default class SearchFormWine extends React.Component {
 
         return (
             <div style={divStyle}>
+            {'Search Wineries'}
                 <form>
                     <Grid container spacing={8}>
-                        <Grid item xs={12} sm={5}>
+                        <Grid item xs={12} sm={2}>
+                            <TextField
+                                // id="standard-select-country"
+                                fullWidth
+                                select
+                                label="Color"
+                                // className={classes.textField}
+                                value={this.state.wineColor}
+                                onChange={this.handleChange('wineColor')}
+                                // SelectProps={{
+                                //     MenuProps: {
+                                //     className: classes.menu,
+                                //     },
+                                // }}
+                                margin="normal"
+                                >
+                                {wineColors.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </Grid>
+
+                        <Grid item xs={12} sm={4}>
                             <TextField 
                                 id="standard-password-input"
                                 label="Name"
+                                value={this.state.wineColor}
+                                onChange={this.handleChange('wineColor')}
                                 type="text"
                                 fullWidth
-                                autoComplete="current-password"
+                                // autoComplete="current-password"
                                 margin="normal"
                             />
-                        </Grid>
-
-                        <Grid item xs={12} sm={3}>
-                        <TextField
-                            // id="standard-select-country"
-                            fullWidth
-                            select
-                            label="Type"
-                            // className={classes.textField}
-                            value={this.state.wineType}
-                            onChange={this.handleChange('wineType')}
-                            // SelectProps={{
-                            //     MenuProps: {
-                            //     className: classes.menu,
-                            //     },
-                            // }}
-                            margin="normal"
-                            >
-                            {wineTypes.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                                </MenuItem>
-                            ))}
-                            </TextField>
                         </Grid>
 
                         <Grid item xs={12} sm={2}>
                             <TextField 
                                 id="standard-password-input"
-                                label="Year"
+                                label="Vintage"
                                 type="text"
                                 fullWidth
                                 autoComplete="current-password"
@@ -140,8 +164,31 @@ export default class SearchFormWine extends React.Component {
                             </TextField>
                         </Grid>
 
-                        <Grid item xs={6} sm={10}></Grid>
+                        <Grid item xs={12} sm={2}>
+                        <TextField
+                            // id="standard-select-country"
+                            fullWidth
+                            select
+                            label="Type"
+                            // className={classes.textField}
+                            value={this.state.wineType}
+                            onChange={this.handleChange('wineType')}
+                            // SelectProps={{
+                            //     MenuProps: {
+                            //     className: classes.menu,
+                            //     },
+                            // }}
+                            margin="normal"
+                            >
+                            {wineTypes.map(option => (
+                                <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                                </MenuItem>
+                            ))}
+                            </TextField>
+                        </Grid>
 
+                        <Grid item xs={6} sm={10}></Grid>
                         <Grid item xs={6} sm={2}>
                         <Button 
                             variant="contained" 
