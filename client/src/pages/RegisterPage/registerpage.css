@@ -1,3 +1,20 @@
-.wrap {
-    
+
+.registerWrap {
+    margin: 0;
+    position: relative;
+    height: auto;
+}
+
+.registerWrap::after {
+    content: "";
+    background-image: url("../../images/backgroundRegister.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
 }
