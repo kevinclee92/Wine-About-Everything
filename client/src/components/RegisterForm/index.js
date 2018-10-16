@@ -65,7 +65,7 @@ class RegisterForm extends React.Component {
         var currentState = this.state;
         currentState.redirect = true;
         this.setState({currentState})
-        
+        let object = {username:this.state.user.username}
         API.saveUser({
             username: this.state.user.username,
             password: this.state.user.password,
@@ -78,8 +78,10 @@ class RegisterForm extends React.Component {
             email: this.state.user.email,
             age: this.state.user.age
         })
+        .getUser(object)
         .then(
-            this.props.history.push("/")
+            data => 
+            this.props.history.push("/users/" + data.username)
         );
     }
 
