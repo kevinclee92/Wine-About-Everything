@@ -2,6 +2,7 @@ import React from "react";
 import img from "../../images/homepageImage.jpeg"
 import styles from "./jumbotronimage.css"
 import LoginForm from "../LoginForm"
+import "./jumbotronimage.css"
 
 const JumbotronImage = (props) => (
   <div className="wrap">

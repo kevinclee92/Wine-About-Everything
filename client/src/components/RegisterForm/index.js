@@ -3,24 +3,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import API from '../../utils/API';
 import { withRouter } from 'react-router-dom';
+import "./registerForm.css";
+import Grid from '@material-ui/core/Grid';
 
-
-const styles = theme => ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
-    },
-    dense: {
-      marginTop: 16,
-    },
-    menu: {
-      width: 200,
-    },
-  });
 class RegisterForm extends React.Component {
 
     state = {
@@ -87,113 +72,128 @@ class RegisterForm extends React.Component {
 
     render () {
         return (
-         
-            <form>
-                <h3>Login Info</h3>
-                <TextField
-                    id="username"
-                    label="Username"
-                    margin="normal"
-                    name="username"
-                    value={this.state.user.username}
-                    onChange={this.handleInputChange}
-                    required={true}
-                />
-                <TextField
-                    id="password"
-                    label="Password"
-                    type="password"
-                    autoComplete="current-password"
-                    margin="normal"
-                    name="password"
-                    value={this.state.user.password}
-                    onChange={this.handleInputChange}
-                    required={true}
-                />
-                <TextField
-                    id="email"
-                    label="Email"
-                    placeholder="johndoe@example.com"
-                    margin="normal"
-                    name="email"
-                    value={this.state.user.email}
-                    onChange={this.handleInputChange}
-                    required={true}
-                />
-                <TextField
-                    id="name"
-                    label="Name"
-                    margin="normal"
-                    name="name"
-                    value={this.state.user.name}
-                    onChange={this.handleInputChange}
-                    required={true}
-                />
-                <TextField
-                    id="age"
-                    label="Age"
-                    type="number"
-                    margin="normal"
-                    name="age"
-                    value={this.state.user.age}
-                    onChange={this.handleInputChange}
-                    required={true}
-                />
-                 <TextField
-                    id="phone"
-                    label="Phone Number"
-                    type="number"
-                    margin="normal"
-                    placeholder="XXX-XXX-XXXX"
-                    name="phone"
-                    value={this.state.user.phone}
-                    onChange={this.handleInputChange}
-                />
-                
-                
-                <h3>Address</h3>
-                <TextField
-                    id="street"
-                    label="Street"
-                    margin="normal"
-                    name="street"
-                    value={this.state.user.street}
-                    onChange={this.handleInputChange}
-                />
-                <TextField
-                    id="city"
-                    label="City"
-                    margin="normal"
-                    name="city"
-                    value={this.state.user.city}
-                    onChange={this.handleInputChange}
-                />
-                <TextField
-                    id="state"
-                    label="State"
-                    margin="normal"
-                    name="state"
-                    value={this.state.user.state}
-                    onChange={this.handleInputChange}
-                />
-                <TextField
-                    id="zipcode"
-                    label="Zipcode"
-                    type="number"
-                    margin="normal"
-                    name="zipcode"
-                    value={this.state.user.zipcode}
-                    onChange={this.handleInputChange}
-                />
-
-                <Button onClick={this.handleFormSubmit} variant="contained" color="primary">
-                    Create Account
-                </Button>
-                
-                <Button variant="contained" color="primary" href="/">
-                    Go Back
-                </Button>
-            </form>
+            <Grid item xs={12}>
+                <form className="registerForm">
+                    <h3>Login Information</h3>
+                    <TextField
+                        style={{margin: 15}}
+                        id="username"
+                        label="Username"
+                        margin="normal"
+                        name="username"
+                        value={this.state.user.username}
+                        onChange={this.handleInputChange}
+                        required={true}
+                    />
+                    <TextField
+                        style={{margin: 15}}
+                        id="password"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        margin="normal"
+                        name="password"
+                        value={this.state.user.password}
+                        onChange={this.handleInputChange}
+                        required={true}
+                    />
+                    <h3>Personal Information</h3>
+                    <TextField
+                        style={{margin: 15}}
+                        id="name"
+                        label="Name"
+                        margin="normal"
+                        name="name"
+                        value={this.state.user.name}
+                        onChange={this.handleInputChange}
+                        required={true}
+                    />
+                    <TextField
+                        style={{margin: 15}}
+                        id="email"
+                        label="Email"
+                        placeholder="johndoe@example.com"
+                        margin="normal"
+                        name="email"
+                        value={this.state.user.email}
+                        onChange={this.handleInputChange}
+                        required={true}
+                    />
+                    
+                    <TextField
+                        style={{margin: 15}}
+                        id="age"
+                        label="Age"
+                        type="number"
+                        margin="normal"
+                        name="age"
+                        value={this.state.user.age}
+                        onChange={this.handleInputChange}
+                        required={true}
+                    />
+                    <TextField
+                        style={{margin: 15}}
+                        id="phone"
+                        label="Phone Number"
+                        type="number"
+                        margin="normal"
+                        placeholder="XXX-XXX-XXXX"
+                        name="phone"
+                        value={this.state.user.phone}
+                        onChange={this.handleInputChange}
+                    />
+                    <div>
+                        <TextField
+                            style={{margin: 15}}
+                            id="street"
+                            label="Street"
+                            margin="normal"
+                            name="street"
+                            value={this.state.user.street}
+                            onChange={this.handleInputChange}
+                        />
+                        <TextField
+                            style={{margin: 15}}
+                            id="city"
+                            label="City"
+                            margin="normal"
+                            name="city"
+                            value={this.state.user.city}
+                            onChange={this.handleInputChange}
+                        />
+                        <TextField
+                            style={{margin: 15}}
+                            id="state"
+                            label="State"
+                            margin="normal"
+                            name="state"
+                            value={this.state.user.state}
+                            onChange={this.handleInputChange}
+                        />
+                        <TextField
+                            style={{margin: 15}}
+                            id="zipcode"
+                            label="Zipcode"
+                            type="number"
+                            margin="normal"
+                            name="zipcode"
+                            value={this.state.user.zipcode}
+                            onChange={this.handleInputChange}
+                        />
+                    </div>
+                    
+                    <div>
+                        <Button style={{margin: 5}} onClick={this.handleFormSubmit} type="submit" variant="contained" color="primary">
+                            Create Account
+                        </Button>
+                        
+                        <Button style={{margin: 5}} variant="contained" color="primary" href="/">
+                            Go Back
+                        </Button>
+                    </div>
+                </form>
+            </Grid>
+            
         );
     }
 }
