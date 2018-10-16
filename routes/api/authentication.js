@@ -17,6 +17,7 @@ module.exports = function (passport) {
             zipcode = body.zipcode,
             email = body.email,
             age = body.age,
+            image = body.image,
             date = body.date
             
         User.findOne({
@@ -39,13 +40,14 @@ module.exports = function (passport) {
                     record.zipcode = zipcode;
                     record.email = email;
                     record.age = age;
+                    record.image = image;
                     record.date = date;
 
                     record.save(function (err, user) {
                         if (err) {
                             res.status(500).send('db error')
                         } else {
-                            res.redirect('/users/:userid')
+                            res.redirect('/users/' + user.userid)
                         }
                     })
                 }

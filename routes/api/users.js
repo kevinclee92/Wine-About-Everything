@@ -12,5 +12,5 @@ router
   .get(usersController.findById)
   .put(usersController.update)
   .delete(usersController.remove);
-
-  module.exports = router;
+  
+module.exports = router;
