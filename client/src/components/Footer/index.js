@@ -9,6 +9,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 const Footer = () => (
   <footer>
     <BottomNavigation
+        style={{marginTop: 20}}
         // value={value}
         // onChange={this.handleChange}
         // showLabels
