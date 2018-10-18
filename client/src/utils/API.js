@@ -21,8 +21,12 @@ export default {
     return axios.get("/api/user");
   },
   // Gets the note with the given id
-  getUser: function(username) {
+  getUserByUsername: function(username) {
     return axios.get("/api/users/" + username);
+  },
+
+  getUser: function(id) {
+    return axios.get("/api/users/" + id);
   },
   // Deletes the note with the given id
   deleteUser: function(id) {
@@ -32,8 +36,25 @@ export default {
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
   },
-  loginUser: function(userData) {
-    return axios.post("/api/users/login");
-  }
 
+  loginUser: function(userData) {
+    return axios.post("/api/users/login", userData);
+  },
+
+  // Gets all places
+  getPlaces: function() {
+    return axios.get("/api/places");
+  },
+  // Gets the place with the given id
+  getPlace: function(id) {
+    return axios.get("/api/places/" + id);
+  },
+  // Deletes the place with the given id
+  deletePlace: function(id) {
+    return axios.delete("/api/places/" + id);
+  },
+  // Saves a place to the database
+  savePlace: function(placeData) {
+    return axios.post("/api/places", placeData);
+  }
 };
