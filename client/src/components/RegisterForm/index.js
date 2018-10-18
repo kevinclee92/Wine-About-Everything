@@ -63,10 +63,9 @@ class RegisterForm extends React.Component {
             email: this.state.user.email,
             age: this.state.user.age
         })
-        .getUser(object)
         .then(
-            data => 
-            this.props.history.push("/users/" + data.username)
+            () => 
+            this.props.history.push("/")
         );
     }
 
