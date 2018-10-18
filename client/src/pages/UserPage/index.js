@@ -36,7 +36,7 @@ class UserPage extends Component {
       loadPlaces = () => {
           API.getPlaces()
             .then(res => 
-                this.setState({ places: res.data, title: "", discription: "", image: "" })
+                this.setState({ place: res.data, title: "", discription: "", image: "" })
             )
             .catch(err => console.log(err));
       }
@@ -136,7 +136,7 @@ class UserPage extends Component {
             </form>
         </Col>
         <Col size="md-6 sm-12">
-        <Jumbotron idName="placesJumbo">
+        <div className="placesJumbo">
               <h3>Places I've Visited</h3>
             
             {this.state.places.length ? (
@@ -149,13 +149,13 @@ class UserPage extends Component {
                         <img className="placesImage" src={place.image} alt={place.discription} />
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteNote(place._id)} />
+                    <DeleteBtn onClick={() => this.deletePlace(place._id)} />
                   </ListItem>
                 ))}
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )}</Jumbotron>
+            )}</div>
         </Col>
         </Row>        
         </Container>

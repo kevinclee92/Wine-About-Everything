@@ -1,9 +1,10 @@
-#root { 
-    background: url('../../images/brokenGlass.jpeg') no-repeat center fixed; 
+.bgDiv { 
+    background: url('../../images/brokenGlass.jpeg') no-repeat center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    height: 643px;
   }
 
   h1 {
@@ -12,8 +13,7 @@
 
   h2 {
     font-size: 20px;
-    position: absolute;
-    margin-bottom: 0px;
+    margin-top: 100px;
     right: 5px;
     text-align: right;
   }
