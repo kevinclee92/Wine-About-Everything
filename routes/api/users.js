@@ -13,6 +13,14 @@ router.route("/")
 }))
 //   .post(usersController.create)
 
+/* Handle Login POST */
+  router.post('/login', passport.authenticate('login', {
+    successRedirect: '/user',
+    failureRedirect: '/',
+    failureFlash : true 
+  }));
+
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")
