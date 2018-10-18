@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const noteRoutes = require("./notes");
 const userRoutes = require("./users");
+const authRoutes = require("./auth");
 
 
 // Note routes
@@ -8,6 +9,7 @@ router.use("/notes", noteRoutes);
 
 // User routes
 router.use("/users", userRoutes);
+
 
 
 

@@ -18,11 +18,11 @@ export default {
     return axios.post("/api/notes", noteData);
   },
   getUsers: function() {
-    return axios.get("/api/users");
+    return axios.get("/api/user");
   },
   // Gets the note with the given id
-  getUser: function(id) {
-    return axios.get("/api/users/" + id);
+  getUser: function(username) {
+    return axios.get("/api/users/" + username);
   },
   // Deletes the note with the given id
   deleteUser: function(id) {
@@ -31,5 +31,6 @@ export default {
   // Saves a note to the database
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
-  }
+  },
+
 };

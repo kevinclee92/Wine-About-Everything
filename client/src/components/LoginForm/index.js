@@ -13,17 +13,18 @@ export default class LoginForm extends React.Component {
     }
 
     handleChange = event => {
+        var user = this.state.user;
+        const { name, value } = event.target;
+        user[name] = value;
         this.setState({
-            user: {
-                [event.target.id]: event.target.value
-            }
-        });
+            user
+        })
     }
 
    
     handleFormSubmit = event => {
         event.preventDefault()
-
+        console.log(this.state.user);
     }
 
     render () {
@@ -34,9 +35,8 @@ export default class LoginForm extends React.Component {
                         <br />
                         <TextField id="username"
                         label="Username"
-                        type="username"
-                        autoComplete="current-password"
                         margin="normal"
+                        name="username"
                         style={{marginRight: "15px"}}
                         value={this.state.user.username}
                         onChange={this.handleChange}
@@ -45,16 +45,16 @@ export default class LoginForm extends React.Component {
                         <TextField id="password"
                         label="Password"
                         type="password"
-                        autoComplete="current-password"
+                        name="password"
                         margin="normal"
                         value={this.state.user.password}
                         onChange={this.handleChange}
                         />
                         <br /><br />
-                        <Button type="submit" onClick={() => this.handleFormSubmit} variant="contained" color="primary" style={{marginRight: "10px"}}>
+                        <Button type="submit" onClick={this.handleFormSubmit} variant="contained" color="primary" style={{marginRight: "10px"}}>
                             Login
                         </Button>
-                        <Button variant="contained" color="primary" href="/register">
+                        <Button variant="contained" color="primary" href="/signup">
                             Create Account
                         </Button>
                     </form>
