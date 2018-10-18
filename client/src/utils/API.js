@@ -13,14 +13,14 @@ export default {
   deleteNote: function(id) {
     return axios.delete("/api/notes/" + id);
   },
-  // Saves a note to the database
+  // Saves a user to the database
   saveNote: function(noteData) {
     return axios.post("/api/notes", noteData);
   },
   getUsers: function() {
     return axios.get("/api/user");
   },
-  // Gets the note with the given id
+  // Gets the user with the given id
   getUserByUsername: function(username) {
     return axios.get("/api/users/" + username);
   },
@@ -32,7 +32,7 @@ export default {
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);
   },
-  // Saves a note to the database
+  // Saves a user to the database
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
   },

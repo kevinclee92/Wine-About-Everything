@@ -15,9 +15,10 @@ const UserSchema = new Schema({
   email: {type: String},
   age: {type: Number},
   image: {type: String},
+  notes: [{ type: Schema.Types.ObjectId, ref: 'Note' }],
+  places: [{ type: Schema.Types.ObjectId, ref: 'Place' }],
   date: { type: Date, default: Date.now }
 });
-
 
 
 // UserSchema.plugin(passportLocalMongoose);
