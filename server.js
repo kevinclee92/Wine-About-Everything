@@ -23,7 +23,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-require('./config/passport')(passport);
+require('./config/passport.js')(passport);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
