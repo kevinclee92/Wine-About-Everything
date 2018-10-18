@@ -1,0 +1,19 @@
+#root { 
+    background: url('../../images/brokenGlass.jpeg') no-repeat center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+
+  h2 {
+    font-size: 20px;
+    position: absolute;
+    margin-bottom: 0px;
+    right: 5px;
+    text-align: right;
+  }
