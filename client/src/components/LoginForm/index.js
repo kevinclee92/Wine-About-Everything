@@ -1,14 +1,16 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
+import API from '../../utils/API';
 
-export default class LoginForm extends React.Component {
-
+class LoginForm extends React.Component {
+ 
     state = {
         user: {
-            username: "",
-            password: ""
+            username: '',
+            password: '',
+            redirectTo: null
         }
     }
 
@@ -24,10 +26,41 @@ export default class LoginForm extends React.Component {
    
     handleFormSubmit = event => {
         event.preventDefault()
-        console.log(this.state.user);
+        API.loginUser(this.state.user)
+        .then(response => {
+            console.log('login response: ')
+            //console.log(response)
+            console.log(this.props);
+            if (response.status === 200) {
+                // update App.js state
+                this.props.updateUser({
+                    loggedIn: true,
+                    username: response.data.username
+                })
+
+                //API call
+                API.getUserByUsername(response.data.username)
+                .then(response => {
+                    // update the state to redirect to home
+                    this.setState({
+                        redirectTo: '/user/' + response.data._id
+                    })
+                })
+                
+                
+            }
+        }).catch(error => {
+            console.log('login error: ')
+            console.log(error);
+            
+        })
+
     }
 
     render () {
+        if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } else {
         return (
            
                     <form>
@@ -62,4 +95,7 @@ export default class LoginForm extends React.Component {
             
         );
     }
+    }
 }
+
+export default withRouter(LoginForm);
