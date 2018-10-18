@@ -19,10 +19,15 @@ class UserPage extends Component {
     }
 
     componentDidMount() {
-        API.getUser(this.props.match.params.userid) 
-        .then(res => this.setState({user: res.data}))
-        this.loadNotes();
-        this.loadPlaces();
+        API.getUser(this.props.match.params.id) 
+        .then(res => {
+          console.log(res);
+          this.setState({user: res.data})
+        })
+        .then(() => {
+          this.loadNotes();
+          this.loadPlaces();
+        })
       }
 
       loadNotes = () => {

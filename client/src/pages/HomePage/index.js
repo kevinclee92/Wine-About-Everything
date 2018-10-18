@@ -11,7 +11,7 @@ export default class HomePage extends React.Component {
         return (
             <div>
                 <Jumbotron>
-                    <JumbotronImage props={this.props}/>     
+                    <JumbotronImage updateUser={this.props.updateUser}/>     
                 </Jumbotron>
             </div>
         )
