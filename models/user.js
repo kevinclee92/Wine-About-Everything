@@ -9,7 +9,7 @@ const NoteSchema = new Schema({
   date: { type: Date, default: Date.now }
 });
 
-const PlaceSchema = new Schema({
+const FavSchema = new Schema({
   title: { type: String, required: true },
   discription: { type: String, required: true },
   image: String,
@@ -33,7 +33,7 @@ const UserSchema = new Schema({
   age: {type: Number},
   image: {type: String},
   notes: [NoteSchema],
-  places: [PlaceSchema],
+  favs: [FavSchema],
   friends: [FriendSchema],
   date: { type: Date, default: Date.now }
 });
@@ -41,7 +41,7 @@ const UserSchema = new Schema({
 
 let User = mongoose.model("User", UserSchema);
 const Note = mongoose.model("Note", NoteSchema);
-const Place = mongoose.model("Place", PlaceSchema);
+const Fav = mongoose.model("Fav", FavSchema);
 const Friend = mongoose.model("Friend", FriendSchema);
 
 module.exports = User;
