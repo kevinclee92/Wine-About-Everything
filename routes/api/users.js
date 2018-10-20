@@ -5,7 +5,7 @@ var passport = require('passport');
 
 // Matches with "/api/users"
 router.route("/")
-.get(usersController.findAll)
+.get(usersController.findOne)
 .post(passport.authenticate('signup', {
   successRedirect: '/',
     failureRedirect: '/signup',
@@ -17,15 +17,17 @@ router.route("/")
 /* Handle Login POST */
   router.post('/login', passport.authenticate('login'), 
     (req, res) => {
+      console.log(req.user);
       // console.log('logged in', req.user);
       var userInfo = {
-        username: req.user.username
+        user: req.user
       };
       res.send(userInfo);
     }
   );
 
 router.route("/:username").get(usersController.findByUsername);
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")

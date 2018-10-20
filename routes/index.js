@@ -38,6 +38,7 @@ var isAuthenticated = function (req, res, next) {
 
 
  router.get('/user', isAuthenticated, function(req, res){
+   console.log("working?", req.user)
     res.send({ user: req.user });
  });
 

@@ -18,17 +18,16 @@ class UserPage extends Component {
         places: [],
     }
 
-    componentDidMount() {
-        API.getUser(this.props.match.params.id) 
-        .then(res => {
-          console.log(res);
-          this.setState({user: res.data})
-        })
-        .then(() => {
-          this.loadNotes();
-          this.loadPlaces();
-        })
-      }
+    // componentDidMount() {
+    //     API.getUser(this.props.match.params.id) 
+    //     .then(res => {
+    //       this.setState({user: res.data})
+    //     })
+    //     .then(() => {
+    //       this.loadNotes();
+    //       this.loadPlaces();
+    //     })
+    //   }
 
       loadNotes = () => {
         API.getNotes()

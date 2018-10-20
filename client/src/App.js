@@ -28,7 +28,9 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      user: {},
+      
     }
   }
 
@@ -38,25 +40,27 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.getUser();
+    this.getUser();
   }
 
   getUser() {
-    API.getUser(this.state.username).then(response => {
+    API.getUserByUsername(this.state.username).then(response => {
       console.log('Get user response: ')
-      console.log(response.data)
+      // console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
 
         this.setState({
           loggedIn: true,
-          username: response.data.user.username
+          username: response.data.user.username,
+          user: response.data.user
         })
       } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
-          username: null
+          username: null,
+          user: {}
         })
       }
     })
@@ -72,7 +76,7 @@ class App extends Component {
               <Route path="/signup" render={props => <RegisterPage 
                updateUser={this.updateUser}
               {...props}/>}/>
-              <Route path="/user/:id" component={UserPage} />
+              <Route path="/user" component={UserPage} />
               <Route path="/search" component={SearchPage} />
               <Route path="/notes" component={Notes} />
               <Route exact path="/notes/:id" component={Detail} />

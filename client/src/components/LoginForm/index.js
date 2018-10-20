@@ -29,25 +29,24 @@ class LoginForm extends React.Component {
         API.loginUser(this.state.user)
         .then(response => {
             console.log('login response: ')
+            console.log(response);
             //console.log(response)
             console.log(this.props);
             if (response.status === 200) {
                 // update App.js state
-                this.props.updateUser({
-                    loggedIn: true,
-                    username: response.data.username
-                })
-
-                //API call
-                API.getUserByUsername(response.data.username)
-                .then(response => {
-                    // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/user/' + response.data._id
+                API.getUserByUsername(response.data.user.username)
+                .then(res => {
+                    this.props.updateUser({
+                        loggedIn: true,
+                        username: response.data.user.username,
+                        user: response.data.user
                     })
                 })
-                
-                
+                .then( () => {
+                    this.setState({
+                        redirectTo: '/user'
+                    })
+                })
             }
         }).catch(error => {
             console.log('login error: ')
