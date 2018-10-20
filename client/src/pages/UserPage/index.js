@@ -15,20 +15,29 @@ class UserPage extends Component {
     state = {
         user: {},
         notes: [],
-        places: [],
+        places: []
+
     }
 
     componentDidMount() {
-        API.getUser(this.props.match.params.id)
-        .then(res => {
-          console.log(res);
-          this.setState({user: res.data})
+       console.log(this.props.user._id);
+      API.getUser(this.props.user._id)
+      .then(res => {
+        console.log("get by id", res);
+        this.setState({
+          user: res.data,
+          notes: res.data.notes,
+          places: res.data.places
         })
-        .then(() => {
-          this.loadNotes();
-          this.loadPlaces();
-        })
-      }
+      })
+      .then(() => {
+        this.loadNotes()
+        this.loadPlaces()
+      })
+      
+    }
+        
+
 
       loadNotes = () => {
         API.getNotes()
@@ -94,7 +103,8 @@ class UserPage extends Component {
             <Jumbotron>
               <h3>Notes On My List</h3>
             
-            {this.state.user.notes.length ? (
+            {this.state.user.notes ? (
+
               <List>
                 {this.state.user.notes.map(note => (
                   <ListItem key={note._id}>
@@ -144,9 +154,9 @@ class UserPage extends Component {
         <div className="placesJumbo">
               <h3>Places I've Visited</h3>
             
-            {this.state.places.length ? (
+            {this.state.user.places ? (
               <List>
-                {this.state.places.map(place => (
+                {this.state.user.places.map(place => (
                   <ListItem key={place._id}>
                     <Link to={"/places/" + place._id}>
                       <strong>
