@@ -13,26 +13,26 @@ export default {
   deleteNote: function(id) {
     return axios.delete("/api/notes/" + id);
   },
-  // Saves a note to the database
+  // Saves a user to the database
   saveNote: function(noteData) {
     return axios.post("/api/notes", noteData);
   },
   getUsers: function() {
-    return axios.get("/api/user");
+    return axios.get("/api/users");
   },
-  // Gets the note with the given id
+  // Gets the user with the given id
   getUserByUsername: function(username) {
-    return axios.get("/api/user/" + username);
+    return axios.get("/api/users/" + username);
   },
 
   getUser: function(id) {
-    return axios.get("/api/user/" + id);
+    return axios.get("/api/users/id/" + id);
   },
   // Deletes the note with the given id
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);
   },
-  // Saves a note to the database
+  // Saves a user to the database
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
   },

@@ -19,10 +19,10 @@ var isAuthenticated = function (req, res, next) {
 
 
   /* GET login page. */
-  router.get('/', function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('index', { message: req.flash('message') });
-  });
+  // router.get('/', function(req, res) {
+  //   // Display the Login page with any flash message, if any
+  //   res.render('index', { message: req.flash('message') });
+  // });
  
   /* Handle Login POST */
   // router.post('/', passport.authenticate('login', {
@@ -37,10 +37,10 @@ var isAuthenticated = function (req, res, next) {
   // });
 
 
- router.get('/user', isAuthenticated, function(req, res){
-   console.log("working?", req.user)
-    res.send({ user: req.user });
- });
+//  router.get('/user', isAuthenticated, function(req, res){
+//    console.log("working?", req.user)
+//     res.send({ user: req.user });
+//  });
 
  router.post('/logout', (req, res) => {
   if (req.user) {

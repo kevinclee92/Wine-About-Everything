@@ -16,13 +16,27 @@ class UserPage extends Component {
         user: {},
         notes: [],
         places: []
+
     }
 
     componentDidMount() {
-      // console.log(this.props.user);
+       console.log(this.props.user._id);
       API.getUser(this.props.user._id)
-      .then(res => this.setState({user: res}))
+      .then(res => {
+        console.log("get by id", res);
+        this.setState({
+          user: res.data,
+          notes: res.data.notes,
+          places: res.data.places
+        })
+        
+        
+        //console.log(this.state)
+      })
+      
     }
+        
+
 
       loadNotes = () => {
         API.getNotes()
@@ -35,7 +49,7 @@ class UserPage extends Component {
       loadPlaces = () => {
           API.getPlaces()
             .then(res => 
-                this.setState({ places: res.data, title: "", discription: "", image: "" })
+                this.setState({ place: res.data, title: "", discription: "", image: "" })
             )
             .catch(err => console.log(err));
       }
@@ -88,9 +102,9 @@ class UserPage extends Component {
             <Jumbotron>
               <h3>Notes On My List</h3>
             
-            {this.state.notes.length ? (
+            {this.state.user.notes ? (
               <List>
-                {this.state.notes.map(note => (
+                {this.state.user.notes.map(note => (
                   <ListItem key={note._id}>
                     <Link to={"/notes/" + note._id}>
                       <strong>
@@ -135,12 +149,12 @@ class UserPage extends Component {
             </form>
         </Col>
         <Col size="md-6 sm-12">
-        <Jumbotron idName="placesJumbo">
+        <div className="placesJumbo">
               <h3>Places I've Visited</h3>
             
-            {this.state.places.length ? (
+            {this.state.user.places ? (
               <List>
-                {this.state.places.map(place => (
+                {this.state.user.places.map(place => (
                   <ListItem key={place._id}>
                     <Link to={"/places/" + place._id}>
                       <strong>
@@ -148,13 +162,13 @@ class UserPage extends Component {
                         <img className="placesImage" src={place.image} alt={place.discription} />
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteNote(place._id)} />
+                    <DeleteBtn onClick={() => this.deletePlace(place._id)} />
                   </ListItem>
                 ))}
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )}</Jumbotron>
+            )}</div>
         </Col>
         </Row>        
         </Container>

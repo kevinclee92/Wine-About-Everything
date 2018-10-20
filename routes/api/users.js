@@ -5,7 +5,7 @@ var passport = require('passport');
 
 // Matches with "/api/users"
 router.route("/")
-.get(usersController.findOne)
+.get(usersController.findAll)
 .post(passport.authenticate('signup', {
   successRedirect: '/',
     failureRedirect: '/signup',
@@ -30,7 +30,7 @@ router.route("/:username").get(usersController.findByUsername);
 
 // Matches with "/api/users/:id"
 router
-  .route("/:id")
+  .route("/id/:id")
   .get(usersController.findById)
   .put(usersController.update)
   .delete(usersController.remove);

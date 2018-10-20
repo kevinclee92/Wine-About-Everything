@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import LoadingIcon from '../LoadingIcon';
+import ResultTable from '../ResultTable';
 
 // STYLES
 const divStyle = {
@@ -180,12 +181,11 @@ export default class SearchFormWine extends React.Component {
 
                     <div>
                         <br />
-                        Results
-
-
                         {this.state.loading}
 
-                        {this.state.wineResults.map(
+                        <ResultTable data={this.state.wineResults}/>
+
+                        {/* {this.state.wineResults.map(
                             result => (
                                 <p key={result.wine_id}>
                                     Wine ID: {result.wine_id} <br />
@@ -196,7 +196,7 @@ export default class SearchFormWine extends React.Component {
                                     Country: {result.country} <br />
                                 </p>
                             )
-                        )}
+                        )} */}
                     </div>
                 </div>
             </div>

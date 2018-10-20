@@ -29,18 +29,18 @@ class LoginForm extends React.Component {
         API.loginUser(this.state.user)
         .then(response => {
             console.log('login response: ')
-            console.log(response);
+            console.log(response.data);
             //console.log(response)
             console.log(this.props);
             if (response.status === 200) {
                 // update App.js state
                 API.getUserByUsername(response.data.user.username)
                 .then(res => {
-                    // console.log("UPDATINGGGGG")
+                    console.log(res)
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.user.username,
-                        user: response.data.user
+                        username: res.data.username,
+                        user: res.data
                     })
                 })
                 .then( () => {

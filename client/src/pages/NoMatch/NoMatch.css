@@ -1,19 +1,90 @@
-#rootTwo { 
-    background: url('../../images/brokenGlass.jpeg') no-repeat center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.bgDiv { 
+  background: url('../../images/brokenGlass.jpeg') no-repeat center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 643px;
   }
 
-  h1 {
-    font-size: 35px;
+.noMatchHead {
+  font-size: 35px;
+  text-align: justify;
+  padding-top: 100px;
+}
+
+.noMatchFoot {
+  font-size: 20px;
+  margin-top: 450px;
+  right: 5px;
+  text-align: right;
+  color: white;
+ }
+
+@media (min-width: 1281px) {
+    
+  .noMatchHead {
+    text-align: left;
+    color: black;
+    padding-top: 250px;
+    font-size: 90px;
+  }
+    
+  .noMatchFoot {
+    font-size: 50px;
+    color: white;
+    margin-top: 500px;
   }
 
-  h2 {
-    font-size: 20px;
-    position: absolute;
-    margin-bottom: 0px;
-    right: 5px;
-    text-align: right;
+  .bgDiv {
+    height: 990px;
+    margin-top: -230px
   }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .bgDiv {
+    height: 990px; 
+}
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  .bgDiv {
+    height: 990px; 
+}
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  .bgDiv {
+    height: 761px; 
+}
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  .bgDiv {
+    height: 643px; 
+}
+  
+}
