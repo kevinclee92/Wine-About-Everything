@@ -8,7 +8,13 @@ module.exports = {
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },  
+  },
+  findByUsername: function(req,res) {
+    db.User
+      .findOne({username: req.params.username})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }, 
   findById: function(req, res) {
     db.User
       .findById(req.params.id)
@@ -39,5 +45,18 @@ module.exports = {
       .findOne({username: req.params.username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  // findNotes: function(req, res) {
+  //   db.User.Note
+  //   .find(req.query)
+  //   .sort({ date: -1 })
+  //   .then(dbModel => res.json(dbModel))
+  //   .catch(err => res.status(422).json(err));
+  // },
+  // createNote: function(req, res) {
+  //   db.User.Note
+  //     .create(req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));    
+  // }
 };

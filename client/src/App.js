@@ -20,25 +20,48 @@ import Notes from "./pages/Notes";
 import LoginPage from "./pages/LoginPage";
 import SearchPage from "./pages/SearchPage";
 import Wine101 from "./pages/Wine101"
+import API from "./utils/API";
 
 
 class App extends Component {
 
-  state = {
-    user: {
+  constructor() {
+    super()
+    this.state = {
       loggedIn: false,
-      username: null,
+      username: null
     }
   }
 
-  // fetchUser = () => {
-  //   return true
-  // }
+  updateUser = userObject => {
+    this.setState(userObject)
+    console.log('Updated User state', this.state)
+  }
 
-  // componentDidMount() {
-  //   this.fetchUser()
-  //   .then(user => this.setState({ user: { loggedIn: true }}))
-  // }
+  componentDidMount() {
+    // this.getUser();
+  }
+
+  getUser() {
+    API.getUser(this.state.username).then(response => {
+      console.log('Get user response: ')
+      console.log(response.data)
+      if (response.data.user) {
+        console.log('Get User: There is a user saved in the server session: ')
+
+        this.setState({
+          loggedIn: true,
+          username: response.data.user.username
+        })
+      } else {
+        console.log('Get user: no user');
+        this.setState({
+          loggedIn: false,
+          username: null
+        })
+      }
+    })
+  }
 
   render() {
     return (
@@ -46,9 +69,11 @@ class App extends Component {
       <Router>
         <div>
             <Switch>
-              <Route exact path="/" render={props => <HomePage {...props}/>}/>
-              <Route path="/signup" render={props => <RegisterPage {...props}/>}/>
-              <Route path="/user" component={UserPage} />
+              <Route exact path="/" render={(props) => <HomePage updateUser={this.updateUser} {...props} />}/>
+              <Route path="/signup" render={props => <RegisterPage 
+               updateUser={this.updateUser}
+              {...props}/>}/>
+              <Route path="/user/:id" component={UserPage} />
               <Route path="/search" component={SearchPage} />
               <Route path="/notes" component={Notes} />
               <Route exact path="/notes/:id" component={Detail} />

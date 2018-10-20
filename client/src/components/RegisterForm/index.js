@@ -51,6 +51,7 @@ class RegisterForm extends React.Component {
         currentState.redirect = true;
         this.setState({currentState})
         let object = {username:this.state.user.username}
+        console.log(this.props)
         API.saveUser({
             username: this.state.user.username,
             password: this.state.user.password,
@@ -123,7 +124,6 @@ class RegisterForm extends React.Component {
                         style={{margin: 15}}
                         id="age"
                         label="Age"
-                        type="number"
                         margin="normal"
                         name="age"
                         value={this.state.user.age}
