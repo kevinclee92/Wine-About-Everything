@@ -18,7 +18,7 @@ export default {
     return axios.post("/api/notes", noteData);
   },
   getUsers: function() {
-    return axios.get("/api/user");
+    return axios.get("/api/users");
   },
   // Gets the user with the given id
   getUserByUsername: function(username) {
@@ -26,7 +26,7 @@ export default {
   },
 
   getUser: function(id) {
-    return axios.get("/api/users/" + id);
+    return axios.get("/api/users/id/" + id);
   },
   // Deletes the note with the given id
   deleteUser: function(id) {

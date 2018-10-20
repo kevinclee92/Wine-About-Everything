@@ -65,8 +65,9 @@ class RegisterForm extends React.Component {
             age: this.state.user.age
         })
         .then(
-            () => 
-            this.props.history.push("/")
+
+                this.props.history.push("/")
+            
         );
     }
 
@@ -134,7 +135,6 @@ class RegisterForm extends React.Component {
                         style={{margin: 15}}
                         id="phone"
                         label="Phone Number"
-                        type="number"
                         margin="normal"
                         placeholder="XXX-XXX-XXXX"
                         name="phone"
