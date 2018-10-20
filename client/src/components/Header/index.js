@@ -1,26 +1,48 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import styles from './headerStyle.css';
+import SimpleMenu from '../SimpleMenu';
 
-const Header = () => (
-  <header>
-    <AppBar className='jumbo valign-wrapper' position="static">    
-        {/* <Toolbar className='container header-background'>        
-          <Typography className='grey-text text-lighten-2 center header' variant="title" color="inherit" >
-            Wine about Everything!
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
+
+function ButtonAppBar(props) {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <SimpleMenu />
+          </IconButton>
+          <Typography variant="h6" color="inherit" className={classes.grow}>
+            *Current Page*
+            {/* MAKE THIS THE PAGE YOU'RE ON */}
           </Typography>
-          <ul style={{listStyleType: "none", margin: 0, padding: 0}}>
-            <li><Button color="inherit">Notes</Button></li>
-            <li><Button color="inherit">Logout</Button></li>
-          </ul>
-        </Toolbar> */}
+          <Button color="inherit">Hello *username*</Button>
+        </Toolbar>
       </AppBar>
-  </header>
-);
+    </div>
+  );
+}
 
-export default Header;
+ButtonAppBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ButtonAppBar);
