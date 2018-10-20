@@ -20,6 +20,7 @@ import { lighten } from '@material-ui/core/styles/colorManipulator';
 import redwineicon from '../../images/redwineicon.png';
 import whitewineicon from '../../images/whitewineicon.png';
 import pinkwineicon from '../../images/pinkwineicon.png';
+import "./resultTable.css";
 
 // let counter = 0;
 // function createData(color, wine, vintage, appellation, score) {
@@ -27,6 +28,7 @@ import pinkwineicon from '../../images/pinkwineicon.png';
 //   return { id: counter, color, wine, vintage, appellation, score };
 // }
 
+// ORDER RESULTS
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -37,6 +39,7 @@ function desc(a, b, orderBy) {
   return 0;
 }
 
+// SORT RESULTS
 function stableSort(array, cmp) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -51,6 +54,7 @@ function getSorting(order, orderBy) {
   return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
 }
 
+// RESULT ROWS
 const rows = [
   { id: 'color', numeric: false, disablePadding: false, label: 'Color' },
   { id: 'wine', numeric: false, disablePadding: false, label: 'Name' },
@@ -156,16 +160,15 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="h6" id="tableTitle">
-            Search Results
-          </Typography>
+          <h2>Results</h2>
         )}
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions}>
+      
         <Tooltip title="Favorite">
             <IconButton aria-label="Favorite">
-              <StarIcon />
+            <div className="star"> <StarIcon /> </div>
             </IconButton>
           </Tooltip>
       </div>

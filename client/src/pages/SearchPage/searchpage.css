@@ -1,11 +1,11 @@
 
-.registerWrap {
+.searchWrap {
     margin: 0;
     position: relative;
     height: auto;
 }
 
-.registerWrap::after {
+.searchWrap::after {
     content: "";
     background-image: url("../../images/backgroundRegister.jpeg");
     background-size: cover;
