@@ -30,7 +30,7 @@ class App extends Component {
       loggedIn: false,
       username: null,
       user: {},
-      
+
     }
   }
 
@@ -76,7 +76,7 @@ class App extends Component {
               <Route path="/signup" render={props => <RegisterPage 
                updateUser={this.updateUser}
               {...props}/>}/>
-              <Route path="/user" component={UserPage} />
+              <Route path="/user" render={(props) => <UserPage updateUser={this.updateUser} user={this.state.user} {...props}/>} />
               <Route path="/search" component={SearchPage} />
               <Route path="/notes" component={Notes} />
               <Route exact path="/notes/:id" component={Detail} />

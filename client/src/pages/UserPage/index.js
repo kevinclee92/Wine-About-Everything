@@ -15,19 +15,14 @@ class UserPage extends Component {
     state = {
         user: {},
         notes: [],
-        places: [],
+        places: []
     }
 
-    // componentDidMount() {
-    //     API.getUser(this.props.match.params.id) 
-    //     .then(res => {
-    //       this.setState({user: res.data})
-    //     })
-    //     .then(() => {
-    //       this.loadNotes();
-    //       this.loadPlaces();
-    //     })
-    //   }
+    componentDidMount() {
+      // console.log(this.props.user);
+      API.getUser(this.props.user._id)
+      .then(res => this.setState({user: res}))
+    }
 
       loadNotes = () => {
         API.getNotes()
