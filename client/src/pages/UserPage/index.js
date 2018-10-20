@@ -19,7 +19,7 @@ class UserPage extends Component {
     }
 
     componentDidMount() {
-        API.getUser(this.props.match.params.id) 
+        API.getUser(this.props.match.params.id)
         .then(res => {
           console.log(res);
           this.setState({user: res.data})
