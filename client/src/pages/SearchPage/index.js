@@ -4,15 +4,19 @@ import SearchFormWine from '../../components/SearchFormWine';
 import SearchFormWinery from '../../components/SearchFormWinery';
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import "../RegisterPage/registerpage.css"
 import "./searchpage.css"
 
 const SearchPage = () => {
     return (
-        <div className="registerWrap">
+        <div>
+
+            <div className="searchWrap">
+
                 <Header />
-                    <SearchFormWine>
-                    </SearchFormWine>
+                <SearchFormWine>
+                </SearchFormWine>
+            </div>
+            
         </div>
     )
 }
