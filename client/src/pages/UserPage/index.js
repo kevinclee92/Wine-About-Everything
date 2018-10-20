@@ -29,9 +29,10 @@ class UserPage extends Component {
           notes: res.data.notes,
           places: res.data.places
         })
-        
-        
-        //console.log(this.state)
+      })
+      .then(() => {
+        this.loadNotes()
+        this.loadPlaces()
       })
       
     }
