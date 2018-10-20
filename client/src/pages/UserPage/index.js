@@ -94,9 +94,9 @@ class UserPage extends Component {
             <Jumbotron>
               <h3>Notes On My List</h3>
             
-            {this.state.notes.length ? (
+            {this.state.user.notes.length ? (
               <List>
-                {this.state.notes.map(note => (
+                {this.state.user.notes.map(note => (
                   <ListItem key={note._id}>
                     <Link to={"/notes/" + note._id}>
                       <strong>

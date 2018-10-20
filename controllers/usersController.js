@@ -1,4 +1,5 @@
 const db = require("../models");
+// console.log('!!!!!', db.User)
 
 // Defining methods for the usersController
 module.exports = {

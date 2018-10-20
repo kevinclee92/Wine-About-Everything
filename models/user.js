@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// var passportLocalMongoose = require('passport-local-mongoose');
 
 const NoteSchema = new Schema({
   title: { type: String, required: true },
@@ -33,20 +32,16 @@ const UserSchema = new Schema({
   email: {type: String},
   age: {type: Number},
   image: {type: String},
-  notes: [{ type: Schema.Types.ObjectId, ref: 'Note' }],
-  places: [{ type: Schema.Types.ObjectId, ref: 'Place' }],
-  friends: [{ type: Schema.Types.ObjectId, ref: 'Friends'}],
+  notes: [NoteSchema],
+  places: [PlaceSchema],
+  friends: [FriendSchema],
   date: { type: Date, default: Date.now }
 });
 
 
-// UserSchema.plugin(passportLocalMongoose);
 let User = mongoose.model("User", UserSchema);
 const Note = mongoose.model("Note", NoteSchema);
 const Place = mongoose.model("Place", PlaceSchema);
 const Friend = mongoose.model("Friend", FriendSchema);
 
 module.exports = User;
-// module.exports = Place;
-// module.exports = Note;
-// module.exports = Friend;
