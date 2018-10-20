@@ -10,10 +10,11 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import LoadingIcon from '../LoadingIcon';
 import ResultTable from '../ResultTable';
+import "./searchFormWine.css";
 
 // STYLES
 const divStyle = {
-    margin: '15%',
+    margin: '5%',
 };
 
 const styles = theme => ({
@@ -64,6 +65,7 @@ export default class SearchFormWine extends React.Component {
         country: '',
         wineResults: [],
         loading: null,
+        isHidden: false,
     };
 
     handleChange = name => event => {
@@ -100,6 +102,7 @@ export default class SearchFormWine extends React.Component {
                 console.log(response);
                 this.setState({ wineResults: response.data.results })
                 this.setState({ loading: null })
+                this.setState({ isHidden: true })
                 // response.data.results
                 // MAP THE RESPONSE TO RESULTS
             })
@@ -115,88 +118,75 @@ export default class SearchFormWine extends React.Component {
         return (
             <div>
                 <div style={divStyle}>
-                    {/* {this.state.name}
-                    {this.state.vintage}
-                    {this.state.country} */}
-                    {'Search Wines'}
-                    <form>
-                        <Grid container spacing={8}>
+                    <div className="searchFormBackground">
+                        <h2>Search Wines</h2>
+                        <form className="searchForm">
+                            <Grid container spacing={8}>
 
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    id="standard-password-input"
-                                    label="Name"
-                                    value={this.state.name}
-                                    onChange={this.handleChange('name')}
-                                    type="text"
-                                    fullWidth
-                                    autoComplete="current-password"
-                                    margin="normal"
-                                />
-                            </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        id="standard-password-input"
+                                        label="Name"
+                                        value={this.state.name}
+                                        onChange={this.handleChange('name')}
+                                        type="text"
+                                        fullWidth
+                                        autoComplete="current-password"
+                                        margin="normal"
+                                    />
+                                </Grid>
 
-                            <Grid item xs={12} sm={2}>
-                                <TextField
-                                    id="standard-password-input"
-                                    label="Vintage"
-                                    value={this.state.vintage}
-                                    onChange={this.handleChange('vintage')}
-                                    type="text"
-                                    fullWidth
-                                    autoComplete="current-password"
-                                    margin="normal"
-                                />
-                            </Grid>
+                                <Grid item xs={12} sm={2}>
+                                    <TextField
+                                        id="standard-password-input"
+                                        label="Vintage"
+                                        value={this.state.vintage}
+                                        onChange={this.handleChange('vintage')}
+                                        type="text"
+                                        fullWidth
+                                        autoComplete="current-password"
+                                        margin="normal"
+                                    />
+                                </Grid>
 
-                            <Grid item xs={12} sm={4}>
-                                <TextField
-                                    fullWidth
-                                    select
-                                    label="Country"
-                                    value={this.state.country}
-                                    onChange={this.handleChange('country')}
-                                    margin="normal"
-                                >
-                                    {countries.map(option => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                            </Grid>
+                                <Grid item xs={12} sm={4}>
+                                    <TextField
+                                        fullWidth
+                                        select
+                                        label="Country"
+                                        value={this.state.country}
+                                        onChange={this.handleChange('country')}
+                                        margin="normal"
+                                    >
+                                        {countries.map(option => (
+                                            <MenuItem key={option.value} value={option.value}>
+                                                {option.label}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                </Grid>
 
-                            <Grid item xs={6} sm={10}></Grid>
-                            <Grid item xs={6} sm={2}>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    style={{ float: "right", marginTop: "10px" }}
-                                    onClick={this.onSubmit}
-                                >
-                                    Search
+                                <Grid item xs={6} sm={10}></Grid>
+                                <Grid item xs={6} sm={2}>
+                                    <Button 
+                                        variant="contained"
+                                        color='secondary'
+                                        style={{ float: "right", marginTop: "10px" }}
+                                        onClick={this.onSubmit}
+                                    >
+                                        Search
                             </Button>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </form>
+                        </form>
 
-                    <div>
-                        <br />
-                        {this.state.loading}
+                        <div>
+                            <br />
+                            {this.state.loading}
 
-                        <ResultTable data={this.state.wineResults}/>
+                            {this.state.isHidden && <ResultTable data={this.state.wineResults} />}
 
-                        {/* {this.state.wineResults.map(
-                            result => (
-                                <p key={result.wine_id}>
-                                    Wine ID: {result.wine_id} <br />
-                                    Wine Color: {result.color} <br />
-                                    Wine Name: {result.wine} <br />
-                                    Vintage: {result.vintage} <br />
-                                    Appelation: {result.appellation} <br />
-                                    Country: {result.country} <br />
-                                </p>
-                            )
-                        )} */}
+                        </div>
                     </div>
                 </div>
             </div>
