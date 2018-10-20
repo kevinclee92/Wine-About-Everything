@@ -19,6 +19,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Notes from "./pages/Notes";
 import LoginPage from "./pages/LoginPage";
 import SearchPage from "./pages/SearchPage";
+import Wine101 from "./pages/Wine101"
 import API from "./utils/API";
 
 
@@ -76,6 +77,7 @@ class App extends Component {
               <Route path="/search" component={SearchPage} />
               <Route path="/notes" component={Notes} />
               <Route exact path="/notes/:id" component={Detail} />
+              <Route path="/wine101" component={Wine101} />
               <Route component={NoMatch} />
             </Switch>
         </div>
