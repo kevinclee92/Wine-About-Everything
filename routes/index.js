@@ -4,8 +4,10 @@ const apiRoutes = require("./api");
 const flash = require("connect-flash");
 
 var isAuthenticated = function (req, res, next) {
-  if (req.isAuthenticated())
-    return next();
+  if (req.isAuthenticated()) { 
+    console.log("req user", req.user);
+    next();
+  }
   res.redirect('/');
 }
 
@@ -18,12 +20,6 @@ var isAuthenticated = function (req, res, next) {
   });
 
 
-  /* GET login page. */
-  // router.get('/', function(req, res) {
-  //   // Display the Login page with any flash message, if any
-  //   res.render('index', { message: req.flash('message') });
-  // });
- 
   /* Handle Login POST */
   // router.post('/', passport.authenticate('login', {
   //   successRedirect: '/user',
@@ -31,16 +27,11 @@ var isAuthenticated = function (req, res, next) {
   //   failureFlash : true 
   // }));
  
-  /* GET Registration Page */
-  // router.get('/', function(req, res){
-  //   res.render('register',{message: req.flash('message')});
-  // });
 
-
-//  router.get('/user', isAuthenticated, function(req, res){
-//    console.log("working?", req.user)
-//     res.send({ user: req.user });
-//  });
+ router.use('/user', isAuthenticated, function(req, res){
+   console.log("working?", req.user)
+    res.send({ user: req.user });
+ });
 
  router.post('/logout', (req, res) => {
   if (req.user) {
