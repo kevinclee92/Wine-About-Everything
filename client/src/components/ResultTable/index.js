@@ -167,7 +167,9 @@ let EnhancedTableToolbar = props => {
       <div className={classes.actions}>
       
         <Tooltip title="Favorite">
-            <IconButton aria-label="Favorite">
+            <IconButton 
+              
+              aria-label="Favorite">
             <div className="star"> <StarIcon /> </div>
             </IconButton>
           </Tooltip>
@@ -259,8 +261,16 @@ class EnhancedTable extends React.Component {
         selected.slice(selectedIndex + 1),
       );
     }
-
     this.setState({ selected: newSelected });
+    console.log(newSelected)
+  };
+
+  handleFavoriteClick = event => {
+    if (event.target.checked) {
+      this.setState(state => ({ selected: state.data.map(n => n.wine_id) }));
+      return;
+    }
+    this.setState({ selected: [] });
   };
 
   handleChangePage = (event, page) => {
