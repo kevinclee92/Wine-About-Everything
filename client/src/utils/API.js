@@ -28,6 +28,9 @@ export default {
   getUser: function(id) {
     return axios.get("/api/users/id/" + id);
   },
+  getStoredUser: function() {
+    return axios.get("/api/users/stored");
+  },
   // Deletes the note with the given id
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);

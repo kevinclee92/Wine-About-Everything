@@ -30,8 +30,7 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: null,
-      user: {},
-
+      user: {}
     }
   }
 
@@ -45,10 +44,10 @@ class App extends Component {
   }
 
   getUser() {
-    API.getUserByUsername(this.state.username).then(response => {
+    API.getUser("1").then(response => {
       console.log('Get user response: ')
        console.log(response.data)
-      if (response.data !== null && response.data !== undefined) {
+      if (response.data !== null && response.data !== undefined && response.data !== "NoAuth") {
         console.log('Get User: There is a user saved in the server session: ')
 
         this.setState({
@@ -56,7 +55,7 @@ class App extends Component {
           username: response.data.username,
           user: response.data
         })
-      } else if (response.data === null || response.data === undefined){
+      } else if (response.data === null || response.data === undefined || response.data === "NoAuth"){
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,

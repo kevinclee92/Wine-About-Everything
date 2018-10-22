@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
   secret: 'thesecret',
-  saveUninitialized: false,
-  resave: false
+  saveUninitialized: true,
+  resave: true
 }))
 app.use(passport.initialize())
 app.use(passport.session())
