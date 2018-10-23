@@ -184,7 +184,7 @@ export default class SearchFormWine extends React.Component {
                             <br />
                             {this.state.loading}
 
-                            {this.state.isHidden && <ResultTable props={this.props} data={this.state.wineResults} />}
+                            {this.state.isHidden && <ResultTable {...this.props} data={this.state.wineResults} />}
 
                         </div>
                     </div>

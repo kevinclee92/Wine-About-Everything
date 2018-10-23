@@ -1,23 +1,16 @@
 import React, { Component } from "react";
 import NoMatch from "./pages/NoMatch";
 import Detail from "./pages/Detail";
-import Nav from "./components/Nav";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import SearchFormWine from "./components/SearchFormWine";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
-  Redirect
 } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
 import RegisterPage from "./pages/RegisterPage";
 import Notes from "./pages/Notes";
-import LoginPage from "./pages/LoginPage";
 import SearchPage from "./pages/SearchPage";
 import Wine101 from "./pages/Wine101"
 import API from "./utils/API";
