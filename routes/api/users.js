@@ -47,7 +47,8 @@ router
   .route("/id/:id")
   .get(isAuthenticated, usersController.findById)
   .put(usersController.update)
-  .delete(usersController.remove);
+  .delete(usersController.remove)
+  .delete(usersController.removeNote);
   
 router.route("/stored").get(isAuthenticated, usersController.findById);
 module.exports = router;

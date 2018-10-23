@@ -22,7 +22,7 @@ import whitewineicon from '../../images/whitewineicon.png';
 import pinkwineicon from '../../images/pinkwineicon.png';
 import "./resultTable.css";
 import API from '../../utils/API';
-import { Redirect, withRouter } from 'react-router-dom';
+// import { Redirect, withRouter } from 'react-router-dom';
 
 // ORDER RESULTS
 function desc(a, b, orderBy) {

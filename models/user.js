@@ -4,8 +4,9 @@ var Schema = mongoose.Schema;
 
 const NoteSchema = new Schema({
   title: { type: String, required: true },
-  discription: { type: String, required: true },
-  synopsis: String,
+  description: { type: String, required: true },
+  synopsis: { type: String },
+  image: { type: String },
   date: { type: Date, default: Date.now }
 });
 
@@ -20,18 +21,18 @@ const FriendSchema = new Schema({
 const UserSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
-  name: {type: String},
-  phone: {type: String},
-  street: {type: String},
-  city: {type: String},
-  state: {type: String},
-  zipcode: {type: String},
-  email: {type: String},
+  name: { type: String },
+  phone: { type: String },
+  street: { type: String },
+  city: { type: String },
+  state: { type: String },
+  zipcode: { type: String },
+  email: { type: String },
   age: {type: Number},
-  image: {type: String},
-  notes: [NoteSchema],
-  favs: [FavSchema],
-  friends: [FriendSchema],
+  image: { type: String },
+  notes: [ NoteSchema ],
+  favs: [ FavSchema ],
+  friends: [ FriendSchema ],
   date: { type: Date, default: Date.now }
 });
 
