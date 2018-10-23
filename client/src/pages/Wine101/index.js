@@ -1,7 +1,5 @@
 import React from 'react';
-import Jumbotron from '../../components/Jumbotron'
 import img from '../../images/foodandwinepairing.jpg'
-import JumbotronImage from '../../components/JumbotronImage'
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import imgThree from '../../images/winestats.jpg';
