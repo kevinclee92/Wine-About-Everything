@@ -21,12 +21,8 @@ import redwineicon from '../../images/redwineicon.png';
 import whitewineicon from '../../images/whitewineicon.png';
 import pinkwineicon from '../../images/pinkwineicon.png';
 import "./resultTable.css";
-
-// let counter = 0;
-// function createData(color, wine, vintage, appellation, score) {
-//   counter += 1;
-//   return { id: counter, color, wine, vintage, appellation, score };
-// }
+import API from '../../utils/API';
+import {Redirect, withRouter} from 'react-router-dom';
 
 // ORDER RESULTS
 function desc(a, b, orderBy) {
@@ -127,13 +123,13 @@ const toolbarStyles = theme => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   spacer: {
     flex: '1 1 100%',
   },
@@ -145,8 +141,7 @@ const toolbarStyles = theme => ({
   },
 });
 
-let EnhancedTableToolbar = props => {
-  const { numSelected, classes } = props;
+let EnhancedTableToolbar = ({ numSelected, classes, handleFavoriteClick }) => {
 
   return (
     <Toolbar
@@ -156,23 +151,23 @@ let EnhancedTableToolbar = props => {
     >
       <div className={classes.title}>
         {numSelected > 0 ? (
-          <Typography color="inherit" variant="subtitle1">
+          <Typography>
             {numSelected} selected
           </Typography>
         ) : (
-          <h2>Results</h2>
-        )}
+            <h2>Results</h2>
+          )}
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions}>
-      
+
         <Tooltip title="Favorite">
-            <IconButton 
-              
-              aria-label="Favorite">
+          <IconButton
+            onClick={event => handleFavoriteClick(event)}
+            aria-label="Favorite">
             <div className="star"> <StarIcon /> </div>
-            </IconButton>
-          </Tooltip>
+          </IconButton>
+        </Tooltip>
       </div>
     </Toolbar>
   );
@@ -190,15 +185,13 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
   },
-  // table: {
-  //   minWidth: 1020,
-  // },
   tableWrapper: {
     overflowX: 'auto',
   },
 });
 
 class EnhancedTable extends React.Component {
+
   state = {
     order: 'asc',
     orderBy: 'wine',
@@ -206,7 +199,32 @@ class EnhancedTable extends React.Component {
     data: [],
     page: 0,
     rowsPerPage: 5,
+    user: {}
   };
+
+  componentDidMount() {
+    console.log('THIS.PROPS.USER-ID: ',this.props);
+   API.getUser(this.props.user._id)
+   .then(res => {
+     console.log("get by id", res);
+     this.setState({
+       user: res.data,
+     })
+   })
+   .then(console.log("SEARCH PAGE USER: ",this.state.user))
+ }
+
+  // PUSH FAVS TO DATABASE
+  // handleFavoriteClick = event => {
+  //   event.preventDefault()
+  //   API.updateUser(this.state.user)
+  //   // NEED ID OF USER AND DATA
+      
+  //     }).catch(error => {
+  //       console.log('Favorite Error: ')
+  //       console.log(error);
+  //     })
+  // }
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
@@ -227,30 +245,30 @@ class EnhancedTable extends React.Component {
     this.setState({ selected: [] });
   };
 
-  wineColor = (color) =>{
-    switch(color) {
+  wineColor = (color) => {
+    switch (color) {
       case 'Red':
-          color = <img src={redwineicon} title='Red' alt="Red Wine" style={{width: 50, height: 50}}></img>
-          break;
+        color = <img src={redwineicon} title='Red' alt="Red Wine" style={{ width: 50, height: 50 }}></img>
+        break;
       case 'White':
-          color = <img src={whitewineicon} title='White' alt="White Wine" style={{width: 50, height: 50}}></img>
-          break;
+        color = <img src={whitewineicon} title='White' alt="White Wine" style={{ width: 50, height: 50 }}></img>
+        break;
       case 'Pink':
-          color = <img src={pinkwineicon} title='Pink' alt="Pink Wine" style={{width: 50, height: 50}}></img>
-          break;
+        color = <img src={pinkwineicon} title='Pink' alt="Pink Wine" style={{ width: 50, height: 50 }}></img>
+        break;
       default:
-          color = ''
+        color = ''
     }
     return color;
   }
 
-  handleClick = (event, id) => {
+  handleClick = (event, wine) => {
     const { selected } = this.state;
-    const selectedIndex = selected.indexOf(id);
+    const selectedIndex = selected.indexOf(wine);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
+      newSelected = newSelected.concat(selected, wine);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -263,14 +281,6 @@ class EnhancedTable extends React.Component {
     }
     this.setState({ selected: newSelected });
     console.log(newSelected)
-  };
-
-  handleFavoriteClick = event => {
-    if (event.target.checked) {
-      this.setState(state => ({ selected: state.data.map(n => n.wine_id) }));
-      return;
-    }
-    this.setState({ selected: [] });
   };
 
   handleChangePage = (event, page) => {
@@ -290,7 +300,7 @@ class EnhancedTable extends React.Component {
 
     return (
       <Paper className={classes.root}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} handleFavoriteClick={this.handleFavoriteClick} />
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">
             <EnhancedTableHead
@@ -305,11 +315,11 @@ class EnhancedTable extends React.Component {
               {stableSort(data, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
-                  const isSelected = this.isSelected(n.wine_id);
+                  const isSelected = this.isSelected(n.wine);
                   return (
                     <TableRow
                       hover
-                      onClick={event => this.handleClick(event, n.wine_id)}
+                      onClick={event => this.handleClick(event, n.wine)}
                       role="checkbox"
                       aria-checked={isSelected}
                       tabIndex={-1}
