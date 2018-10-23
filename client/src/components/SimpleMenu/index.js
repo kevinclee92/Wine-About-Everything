@@ -26,6 +26,7 @@ class SimpleMenu extends React.Component {
         <Button
           aria-owns={anchorEl ? 'simple-menu' : null}
           aria-haspopup="true"
+          variant="fab"
           onClick={this.handleClick}
         >
           <MenuIcon 

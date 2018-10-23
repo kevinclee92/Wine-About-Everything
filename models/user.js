@@ -10,10 +10,7 @@ const NoteSchema = new Schema({
 });
 
 const FavSchema = new Schema({
-  title: { type: String, required: true },
-  discription: { type: String, required: true },
-  image: String,
-  date: { type: Date, default: Date.now }
+  wine: { type: String, required: true },
 });
 
 const FriendSchema = new Schema({
