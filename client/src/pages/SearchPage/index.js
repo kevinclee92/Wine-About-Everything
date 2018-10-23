@@ -6,14 +6,14 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./searchpage.css"
 
-const SearchPage = () => {
+const SearchPage = (props) => {
     return (
         <div>
 
             <div className="searchWrap">
 
                 <Header />
-                <SearchFormWine>
+                <SearchFormWine props={props}>
                 </SearchFormWine>
             </div>
             

@@ -77,7 +77,7 @@ class App extends Component {
                updateUser={this.updateUser}
               {...props}/>}/>
               <Route path="/user" render={(props) => <UserPage updateUser={this.updateUser} user={this.state.user} {...props}/>} />
-              <Route path="/search" component={SearchPage} />
+              <Route path="/search" render={(props) => <SearchPage updateUser={this.updateUser} user={this.state.user} {...props}/>} />
               <Route path="/notes" component={Notes} />
               <Route exact path="/notes/:id" component={Detail} />
               <Route path="/wine101" component={Wine101} />
