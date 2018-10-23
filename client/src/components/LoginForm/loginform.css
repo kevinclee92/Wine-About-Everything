@@ -1,0 +1,26 @@
+.loginTitle {
+    margin: 0;
+    padding: 0;
+}
+
+.loginW {
+    color: orangered;
+    font-weight: bolder;
+}
+
+.signupW {
+    color: darkblue;
+    font-weight: bolder
+}
+
+.loginFormStyle {
+    border: 8px solid rgba(59,91,93);
+    border-radius: 25px;
+    padding: 12px;
+}
+
+.twentyone {
+    font-size: 11px;
+    color: red;
+    font-weight: bolder;
+}

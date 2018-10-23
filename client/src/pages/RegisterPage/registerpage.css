@@ -7,7 +7,7 @@
 
 .registerWrap::after {
     content: "";
-    background-image: url("../../images/backgroundRegister.jpeg");
+    background-image: url("../../images/homepage.jpeg");
     background-size: cover;
     background-attachment: fixed;
     opacity: 0.5;

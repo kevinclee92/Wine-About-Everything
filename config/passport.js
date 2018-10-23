@@ -105,6 +105,7 @@ passport.use('login', new LocalStrategy({
                 newUser.zipcode = req.param('zipcode');
                 newUser.email = req.param('email');
                 newUser.age = req.param('age');
+                newUser.image = req.param('image');
                 // save the user
                 newUser.save(function(err) {
                     if (err)
