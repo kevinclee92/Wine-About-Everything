@@ -11,7 +11,7 @@ export default {
   },
   // Deletes the note with the given id
   deleteNote: function(id) {
-    return axios.delete("/api/users/notes/" + id);
+    return axios.delete("/api/users/id/" + id);
   },
   // Saves a note to the database
   saveNote: function(noteData) {
@@ -47,21 +47,4 @@ export default {
   loginUser: function(userData) {
     return axios.post("/api/users/login", userData);
   },
-
-  // Gets all places
-  getPlaces: function() {
-    return axios.get("/api/places");
-  },
-  // Gets the place with the given id
-  getPlace: function(id) {
-    return axios.get("/api/places/" + id);
-  },
-  // Deletes the place with the given id
-  deletePlace: function(id) {
-    return axios.delete("/api/places/" + id);
-  },
-  // Saves a place to the database
-  savePlace: function(placeData) {
-    return axios.post("/api/places", placeData);
-  }
 };
