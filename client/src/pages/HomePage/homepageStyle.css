@@ -1,0 +1,43 @@
+.background {
+    margin: 0;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+}
+
+.background::after {
+    content: "";
+    background-image: url("../../images/homepage.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+}
+
+.hero {
+    height: 500px;
+    flex: 1;
+    text-align: center;
+}
+
+.logo {
+    width: 500px;
+    height: 500px;
+}
+
+.loginContainer {
+    flex: 1;
+    height: 500px;
+    width: 500px;
+    text-align: left;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}

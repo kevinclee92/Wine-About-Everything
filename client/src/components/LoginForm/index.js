@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Redirect, withRouter} from 'react-router-dom';
 import API from '../../utils/API';
+import "./loginform.css";
 
 class LoginForm extends React.Component {
  
@@ -63,9 +64,9 @@ class LoginForm extends React.Component {
         } else {
         return (
            
-                    <form>
-                        <br />
-                        <br />
+                    <form className="loginFormStyle">
+                        <p className="loginTitle"><span className="loginW">LOG IN</span> or <span className="signupW">SIGN UP</span></p>
+                        <hr />
                         <TextField id="username"
                         label="Username"
                         margin="normal"
@@ -88,8 +89,11 @@ class LoginForm extends React.Component {
                             Login
                         </Button>
                         <Button variant="contained" color="primary" href="/signup">
-                            Create Account
+                            Sign Up
                         </Button>
+                        <br />
+                        <p className="twentyone">* Must be 21 or over. Please drink responsibly.</p>
+
                     </form>
             
             

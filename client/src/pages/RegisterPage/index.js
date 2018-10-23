@@ -17,8 +17,6 @@ export default class RegisterPage extends React.Component {
     render () {
         return (
             <div>
-                <div>
-                </div>
                 <div className="registerWrap">
                     <RegisterForm props={this.props}/>
                 </div>
