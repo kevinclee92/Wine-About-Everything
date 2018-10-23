@@ -24,8 +24,7 @@ module.exports = {
         console.log(dbModel);
         res.json(dbModel)
       })
-      .catch(err => res.status(422).json(err));
-    
+      .catch(err => res.status(422).json(err));    
   },
   create: function(req, res) {
     db.User
@@ -35,8 +34,10 @@ module.exports = {
   },
   update: function(req, res) {
     db.User
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+      .findOneAndUpdate({ _id: req.params.id }, req.body, {new: true})
+      .then(dbModel => {
+        console.log("dbModel Log", dbModel);        
+        res.json(dbModel)})
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
@@ -52,17 +53,27 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // findNotes: function(req, res) {
-  //   db.User.Note
-  //   .find(req.query)
-  //   .sort({ date: -1 })
-  //   .then(dbModel => res.json(dbModel))
-  //   .catch(err => res.status(422).json(err));
-  // },
-  // createNote: function(req, res) {
-  //   db.User.Note
-  //     .create(req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));    
-  // }
+  findNotes: function(req, res) {
+    db.User.Note
+    .find(req.query)
+    .sort({ date: -1 })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
+  createNote: function(req, res) {
+    db.User.Note
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));    
+  },
+  updateNotes: function(req, res) {
+    console.log("id of req user: ", req.user._id)
+    db.User
+    .findByIdAndUpdate({ _id: req.params.id }, {$push: { notes: note }}, {safe: true, upsert: true})
+    .then(dbModel => {
+      console.log(dbModel);
+      res.json(dbModel)
+    })
+    .catch(err => res.status(422).json(err));    
+},
 };
