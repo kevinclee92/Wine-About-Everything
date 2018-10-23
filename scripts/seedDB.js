@@ -13,6 +13,7 @@ const userSeed = [
   {
     username: "Stephen King",
     password: "12345",
+    isAuthenticated: "12345",
     name: "Stephen",
     phone: "619123456",
     street: "123 Four Steet",
@@ -60,6 +61,7 @@ const userSeed = [
   {
     username: "Test",
     password: "test",
+    authenticate: "test",
     name: "Test",
     phone: "619123456",
     street: "567 Eight Steet",
@@ -110,6 +112,58 @@ const userSeed = [
       image: "http://nebula.wsimg.com/caf44750dfabb627b01af32d0f18f006?AccessKeyId=988182F37D4CD728376B&disposition=0&alloworigin=1"
     }],
     date: new Date(Date.now())
+  },
+  {
+    username: "lmerck0",
+    password: "5c5b5fc87af9d16868499a7af894bd095e7cd4e9",
+    name: "Yankee Norway",
+    email: "ywhiff0@sciencedirect.com",
+    image: "https://robohash.org/voluptatumbeataesit.jpg?size=50x50&set=set1",
+    notes: [
+      {
+        title: "3 Ninjas Kick Back",
+        discription: "amet sapien dignissim vestibulum vestibulum ante",
+        synopsis: "iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec"
+      },
+      {
+        title: "Creator",
+        discription: "nunc vestibulum ante ipsum primis in faucibus orci luctus",
+        synopsis: "ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras"
+      },
+      {
+        title: "Our Daily Bread",
+        discription: "duis aliquam convallis nunc proin at turpis",
+        synopsis: "fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien"
+      },
+      {
+        title: "Ali",
+        discription: "ut massa quis augue luctus tincidunt nulla mollis molestie",
+        synopsis: "ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus"
+      }
+    ],
+    favs: [
+      {
+        title: "focus group",
+        discription: "lacinia erat vestibulum sed magna at nunc commodo",
+        image: "http://dummyimage.com/207x131.jpg/dddddd/000000"
+      },
+      {
+        title: "encryption",
+        discription: "curae mauris viverra diam vitae quam suspendisse potenti nullam",
+        image: "http://dummyimage.com/137x100.bmp/5fa2dd/ffffff"
+      },
+      {
+        title: "foreground",
+        discription: "consequat morbi a ipsum integer a nibh in",
+        image: "http://dummyimage.com/199x239.png/cc0000/ffffff"
+      },
+      {
+        title: "Extended",
+        discription: "eu tincidunt in leo maecenas pulvinar lobortis est",
+        image: "http://dummyimage.com/102x199.png/5fa2dd/ffffff"
+      }
+    ],
+    friends: [],
   }
 ]
 

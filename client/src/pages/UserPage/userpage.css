@@ -2,6 +2,14 @@ h1, h3 {
     text-align: center
 }
 
+.userHeader {
+    font-size: 40px;
+}
+
+.userWelcome {
+    justify-content: center;
+}
+
 .avatar {
     display: flex;
     justify-content: center;
