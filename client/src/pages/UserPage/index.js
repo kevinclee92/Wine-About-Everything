@@ -15,7 +15,7 @@ class UserPage extends Component {
     state = {
         user: {},
         notes: [],
-        places: []
+        favs: []
 
     }
 
@@ -27,33 +27,33 @@ class UserPage extends Component {
         this.setState({
           user: res.data,
           notes: res.data.notes,
-          places: res.data.places
+          favs: res.data.favs
         })
       })
-      .then(() => {
-        this.loadNotes()
-        this.loadPlaces()
+      .then(() => {        
+        // this.loadNotes()
+        // this.loadPlaces()
       })
       
     }
         
 
 
-      loadNotes = () => {
-        API.getNotes()
-          .then(res =>
-            this.setState({ notes: res.data, title: "", discription: "", synopsis: "" })
-          )
-          .catch(err => console.log(err));
-      };
+      // loadNotes = () => {
+      //   API.getNotes()
+      //     .then(res =>
+      //       this.setState({ notes: res.data, title: "", discription: "", synopsis: "" })
+      //     )
+      //     .catch(err => console.log(err));
+      // };
 
-      loadPlaces = () => {
-          API.getPlaces()
-            .then(res => 
-                this.setState({ place: res.data, title: "", discription: "", image: "" })
-            )
-            .catch(err => console.log(err));
-      }
+      // loadPlaces = () => {
+      //     API.getPlaces()
+      //       .then(res => 
+      //           this.setState({ place: res.data, title: "", discription: "", image: "" })
+      //       )
+      //       .catch(err => console.log(err));
+      // }
 
       deletePlace = id => {
         API.deletePlace(id)
@@ -74,17 +74,46 @@ class UserPage extends Component {
         });
       };
     
-      handleFormSubmit = event => {
+      handleFormSubmitNote = event => {
         event.preventDefault();
         if (this.state.title && this.state.discription) {
-          API.saveNote({
+          let note = {
             title: this.state.title,
             discription: this.state.discription,
             synopsis: this.state.synopsis,
             date: this.state.date
+          }
+          
+          let notes = this.state.notes
+          notes.push(note)
+
+          this.setState({
+            notes
           })
-            .then(res => this.loadNotes())
-            .catch(err => console.log(err));
+          API.updateUser(this.state.user._id, this.state.user)
+          .then(function(data){
+            console.log("updated user data:", data);              
+          })
+        }
+      };
+
+      handleFormSubmitFavs = event => {
+        event.preventDefault();
+        if (this.state.title && this.state.discription) {
+          let fav = {
+            title: this.state.title,
+            discription: this.state.discription,
+            image: this.state.image,
+            date: this.state.date
+          }
+
+          let favs = this.state.favs
+          favs.push(fav);
+          
+          this.setState({favs})
+            console.log("fav data", this.state.favs);
+            
+            API.updateUser(this.state.user._id, this.state.user)          
         }
       };
 
@@ -103,9 +132,10 @@ class UserPage extends Component {
             <Jumbotron>
               <h3>Notes On My List</h3>
             
-            {this.state.user.notes ? (
+            {this.state.user.notes ? (            
 
               <List>
+                
                 {this.state.user.notes.map(note => (
                   <ListItem key={note._id}>
                     <Link to={"/notes/" + note._id}>
@@ -144,27 +174,33 @@ class UserPage extends Component {
               />
               <FormBtn
                 disabled={!(this.state.discription && this.state.title)}
-                onClick={this.handleFormSubmit}
+                onClick={this.handleFormSubmitNote}
               >
                 Submit Note
+              </FormBtn>
+              <FormBtn
+                disabled={!(this.state.discription && this.state.title)}
+                onClick={this.handleFormSubmitFavs}
+              >
+                Submit Favorite
               </FormBtn>
             </form>
         </Col>
         <Col size="md-6 sm-12">
         <div className="placesJumbo">
-              <h3>Places I've Visited</h3>
+              <h3>My Favorite Places I've Visited</h3>
             
-            {this.state.user.places ? (
+            {this.state.favs ? (
               <List>
-                {this.state.user.places.map(place => (
-                  <ListItem key={place._id}>
-                    <Link to={"/places/" + place._id}>
+                {this.state.favs.map(fav => (
+                  <ListItem key={fav._id}>
+                    <Link to={"/favs/" + fav._id}>
                       <strong>
-                        {place.title} by {place.discription}
-                        <img className="placesImage" src={place.image} alt={place.discription} />
+                        {fav.title} by {fav.discription}
+                        <img className="favImage" src={fav.image} alt={fav.discription} />
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                    <DeleteBtn onClick={() => this.deleteFav(fav._id)} />
                   </ListItem>
                 ))}
               </List>
