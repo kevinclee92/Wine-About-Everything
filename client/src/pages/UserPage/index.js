@@ -111,7 +111,7 @@ class UserPage extends Component {
     render() {
     return (
         <div className="userBG">
-        <Header />
+        <Header {...this.props}/>
         <Container fluid>
         <Row>
           <div className="userWelcome">

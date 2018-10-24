@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import SimpleMenu from '../SimpleMenu';
 import { Link } from "react-router-dom";
 import IconButton from '@material-ui/core/IconButton';
+import API from '../../utils/API';
 
 const styles = {
   root: {
@@ -24,6 +25,24 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes } = props;
+
+  function handleLogOut(event) {
+    event.preventDefault();
+
+    console.log(props);
+    API.logoutUser()
+    .then((req) => {
+      props.updateUser({
+        loggedIn: false,
+        username: null,
+        user: {}
+      })
+    })
+    .then(props.history.push("/"));
+    
+    
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -41,7 +60,7 @@ function ButtonAppBar(props) {
           <Button color="inherit">Search Wines</Button>
           </Link>
           <Link to={"/logout"}>
-          <Button color="inherit">Logout</Button>
+          <Button onClick={handleLogOut} color="inherit">Logout</Button>
           </Link>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
           <SimpleMenu />
