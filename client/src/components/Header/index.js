@@ -21,6 +21,7 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  width: '100%'
 };
 
 function ButtonAppBar(props) {
@@ -28,7 +29,6 @@ function ButtonAppBar(props) {
 
   function handleLogOut(event) {
     event.preventDefault();
-
     console.log(props);
     API.logoutUser()
     .then((req) => {
@@ -38,9 +38,7 @@ function ButtonAppBar(props) {
         user: {}
       })
     })
-    .then(props.history.push("/"));
-    
-    
+    .then(props.history.push("/"));  
   }
 
   return (
@@ -50,7 +48,7 @@ function ButtonAppBar(props) {
           <Typography variant="inherit" color="inherit" className={classes.grow}>
             Welcome to Wine About Everything!
           </Typography>
-          {/* <Link to={"/user"}>
+          <Link to={"/user"}>
           <Button color="inherit">Home</Button>
           </Link>
           <Link to={"/wine101"}>
@@ -61,7 +59,7 @@ function ButtonAppBar(props) {
           </Link>
           <Link to={"/logout"}>
           <Button onClick={handleLogOut} color="inherit">Logout</Button>
-          </Link> */}
+          </Link>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
           <SimpleMenu />
           </IconButton>

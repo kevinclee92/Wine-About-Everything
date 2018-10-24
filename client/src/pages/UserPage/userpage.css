@@ -48,7 +48,10 @@ h1, h3 {
     z-index:1;
 }
 
-.jumbotron h3 {margin-top:0;}
+.jumbotron h3 {
+    margin-top:0;
+}
+
 .jumbotron {
   position:relative;
   padding-top:50px;
@@ -66,6 +69,11 @@ h1, h3 {
   }
 }
 
-.form-group {
-    background: gray;
+.form-control {
+    color: lightgray;
+}
+
+.formCol {
+    display: flex;
+    justify-content: center;
 }

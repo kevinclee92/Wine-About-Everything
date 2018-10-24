@@ -9,7 +9,6 @@ import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn,  } from "../../components/Form";
 import DeleteBtn from "../../components/DeleteBtn";
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer"
 class UserPage extends Component {
     state = {
         user: {},
@@ -109,10 +108,17 @@ class UserPage extends Component {
         }
       };
 
+      isFavs = fav => {
+        let title = this.props.favs.title
+        let description = this.state.favs.fav.description
+        let wine = this.state.user.favs.fav ? fav.wine : title + 'by' + description
+        return wine
+      }
+
             
     render() {
     return (
-        <div className="userBG">
+        <div className="userBG" style={{marginBottom: 80}}>
         <Header {...this.props}/>
         <Container fluid>
         <Row>
@@ -128,7 +134,7 @@ class UserPage extends Component {
             
             <Jumbotron>
               <div class="img"></div>
-              <Container>
+              <Container fluid>
               <h3>My Notes...</h3>
             
             {this.state.user.notes ? (            
@@ -146,12 +152,14 @@ class UserPage extends Component {
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )}</Container></Jumbotron>        
+            )}
+        </Container>
+        </Jumbotron>        
         </Col>
         <Col size="lg-6 md-6 sm-12">
         <Jumbotron>
         <div class="img"></div>
-        <Container>
+        <Container fluid>
               <h3>My Favorite Wines!</h3>
             
             {this.state.favs ? (
@@ -160,7 +168,7 @@ class UserPage extends Component {
                   <ListItem key={fav._id}>
                     <Link to={"/favs/" + fav._id}>
                       <strong>                        
-                        {fav.wine}             
+                        {fav.wine} {fav.title} by {fav.description}        
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteFav(fav._id)} />
@@ -178,28 +186,28 @@ class UserPage extends Component {
         <Col size="lg-12 md-12 sm-12">
         <form>
               <Input
-                style={{marginTop: 5, background: "lightgray"}}
+                style={{marginTop: 5, background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
                 placeholder="Title - Note/Place/Wine (required)"
               />
               <Input
-                style={{background: "lightgray"}}
+                style={{background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
                 placeholder="Note Author/Winery/Vineyard (required)"
               />
               <Input
-                style={{background: "lightgray"}}
+                style={{background: "rgb(148, 148, 194)", color: "black"}}
                 placeholder="Picture Link (Optional)"
                 name="image"
                 value={this.state.image}
                 onChange={this.handleInputChange}
               />
               <TextArea
-                style={{background: "lightgray", fontColor: "white"}}
+                style={{background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.synopsis}
                 onChange={this.handleInputChange}
                 name="synopsis"
@@ -220,8 +228,7 @@ class UserPage extends Component {
             </form>
         </Col>
         </Row>
-        </Container>
-        <Footer />
+        </Container>        
         </div>
     )
     }

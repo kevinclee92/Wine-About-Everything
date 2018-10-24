@@ -10,7 +10,6 @@ import {
 import HomePage from "./pages/HomePage";
 import UserPage from "./pages/UserPage";
 import RegisterPage from "./pages/RegisterPage";
-import Notes from "./pages/Notes";
 import SearchPage from "./pages/SearchPage";
 import Wine101 from "./pages/Wine101"
 import API from "./utils/API";
@@ -71,7 +70,7 @@ class App extends Component {
               {...props}/>}/>
               <Route path="/user" render={(props) => <UserPage updateUser={this.updateUser} user={this.state.user} {...props}/>} />
               <Route path="/search" render={(props) => <SearchPage updateUser={this.updateUser} user={this.state.user} {...props}/>} />
-              <Route path="/notes" component={Detail} />
+              {/* <Route path="/notes" component={Detail} /> */}
               <Route exact path="/notes/:id" component={Detail} />
               <Route path="/wine101" component={Wine101} />
               <Route component={NoMatch} />

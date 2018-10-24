@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 class SimpleMenu extends React.Component {
   state = {
     anchorEl: null,
+    user: {}
   };
 
   handleClick = event => {
@@ -18,6 +19,7 @@ class SimpleMenu extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
 
   render() {
     const { anchorEl } = this.state;
