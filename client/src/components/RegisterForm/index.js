@@ -73,6 +73,12 @@ class RegisterForm extends React.Component {
         return (
             <Grid item xs={12}>
                 <form className="registerForm">
+                    <div>
+
+                    </div>
+                    <div>
+                        
+                    </div>
                     <h5>Create your account for Wine About Me</h5>
                     <p className="twentyone" style={{textAlign: "center"}}>* Must be 21 or over to sign up.</p>
                     <div>
