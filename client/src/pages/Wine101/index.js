@@ -6,25 +6,22 @@ import imgThree from '../../images/winestats.jpg';
 import imgFour from '../../images/winestats2.jpg';
 import imgFive from '../../images/winestats3.jpg';
 import imgSix from '../../images/winestats4.jpg';
-import imgEight from '../../images/holdwine.jpg';
-import imgNine from '../../images/redvswhite.jpg';
 import imgTen from '../../images/happyhour.jpg';
 import imgEleven from '../../images/smallbottle.jpg';
+import imgLogo from '../../images/logo_transparent.png';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Paper from '@material-ui/core/Paper';
 import Grow from '@material-ui/core/Grow';
+import './wine101.css'
 
 const styles = theme => ({
   root: {
     height: 180,
   },
-  
   container: {
-    display: 'flex',
-    
-    
+    display: 'flex',   
   },
   paper: {
     margin: theme.spacing.unit,
@@ -55,8 +52,8 @@ class SimpleGrow extends React.Component {
     const { checked } = this.state;
 
     return (
-      <div>
-      <Header />
+      <div className="wineBackground">
+        <Header {...this.props}/>
       <h1> Interesting facts about wine...</h1>
                     
                     
@@ -173,7 +170,7 @@ class SimpleGrow extends React.Component {
           </Grow>          
           
           </div>
-          
+          <Footer/>
       </div>
     );
     
