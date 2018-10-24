@@ -3,6 +3,7 @@
     margin: 0;
     position: relative;
     height: auto;
+    padding-top: 20px;
 }
 
 .registerWrap::after {

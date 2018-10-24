@@ -20,14 +20,23 @@ const FriendSchema = new Schema({
 const UserSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
-  name: {type: String},
+  name: {type: String, required: true},
   phone: {type: String},
   street: {type: String},
   city: {type: String},
   state: {type: String},
   zipcode: {type: String},
   email: {type: String},
-  age: {type: Number},
+  age: {
+    type: Number, 
+    required: true,
+    validate: {
+      validator: function(number) {
+        return number >= 21;
+      },
+      message: "Must be 21 or over!"
+    }
+  },
   image: {type: String},
   notes: [NoteSchema],
   favs: [FavSchema],

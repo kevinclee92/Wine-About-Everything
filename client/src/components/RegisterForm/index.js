@@ -19,7 +19,8 @@ class RegisterForm extends React.Component {
             state: "",
             zipcode: "",
             email: "",
-            age: ""
+            age: "",
+            image: ""
         },
         redirect: false
     }
