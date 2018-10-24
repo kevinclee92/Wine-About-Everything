@@ -97,7 +97,7 @@ class UserPage extends Component {
     render() {
     return (
         <div>
-        <Header />
+        <Header {...this.props}/>
         <Container fluid>
         <Row>
           <div className="userWelcome">
