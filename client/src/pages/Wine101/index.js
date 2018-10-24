@@ -56,6 +56,7 @@ class SimpleGrow extends React.Component {
 
     return (
       <div>
+      <Header />
       <h1> Interesting facts about wine...</h1>
                     
                     

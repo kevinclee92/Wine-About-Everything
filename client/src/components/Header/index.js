@@ -50,7 +50,7 @@ function ButtonAppBar(props) {
           <Typography variant="inherit" color="inherit" className={classes.grow}>
             Welcome to Wine About Everything!
           </Typography>
-          <Link to={"/user"}>
+          {/* <Link to={"/user"}>
           <Button color="inherit">Home</Button>
           </Link>
           <Link to={"/wine101"}>
