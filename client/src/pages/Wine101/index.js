@@ -1,6 +1,5 @@
 import React from 'react';
 import img from '../../images/foodandwinepairing.jpg'
-import JumbotronImage from '../../components/JumbotronImage'
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import imgThree from '../../images/winestats.jpg';
@@ -54,7 +53,7 @@ class SimpleGrow extends React.Component {
 
     return (
       <div className="wineBackground">
-        <Header/>
+        <Header {...this.props}/>
       <h1> Interesting facts about wine...</h1>
                     
                     

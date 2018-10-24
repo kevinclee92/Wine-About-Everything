@@ -2,25 +2,19 @@ h1, h3 {
     text-align: center
 }
 
-.userHeader {
-    font-size: 40px;
+.userWelcome {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
-.userWelcome {
-    justify-content: center;
+.welcomeText {
+    font-size: 50px;
 }
 
 .avatar {
     display: flex;
     justify-content: center;
-}
-
-.placesJumbo {
-    height: 360px;
-    clear: "both";
-    padding: 0;
-    text-align: "center";
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    margin-top: 20px;
+    width: 100%;
 }

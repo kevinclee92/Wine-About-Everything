@@ -22,7 +22,7 @@ import whitewineicon from '../../images/whitewineicon.png';
 import pinkwineicon from '../../images/pinkwineicon.png';
 import "./resultTable.css";
 import API from '../../utils/API';
-import {Redirect, withRouter} from 'react-router-dom';
+// import { Redirect, withRouter } from 'react-router-dom';
 
 // ORDER RESULTS
 function desc(a, b, orderBy) {
@@ -199,169 +199,178 @@ class EnhancedTable extends React.Component {
     data: [],
     page: 0,
     rowsPerPage: 5,
-    user: {}
+    user: {},
+    favs: []
   };
 
   componentDidMount() {
-    console.log('THIS.PROPS.USER-ID: ',this.props);
-   API.getUser(this.props.user._id)
-   .then(res => {
-     console.log("get by id", res);
-     this.setState({
-       user: res.data,
-     })
-   })
-   .then(console.log("SEARCH PAGE USER: ",this.state.user))
- }
-
-  // PUSH FAVS TO DATABASE
-  // handleFavoriteClick = event => {
-  //   event.preventDefault()
-  //   API.updateUser(this.state.user)
-  //   // NEED ID OF USER AND DATA
-      
-  //     }).catch(error => {
-  //       console.log('Favorite Error: ')
-  //       console.log(error);
-  //     })
-  // }
-
-  handleRequestSort = (event, property) => {
-    const orderBy = property;
-    let order = 'desc';
-
-    if (this.state.orderBy === property && this.state.order === 'desc') {
-      order = 'asc';
-    }
-
-    this.setState({ order, orderBy });
-  };
-
-  handleSelectAllClick = event => {
-    if (event.target.checked) {
-      this.setState(state => ({ selected: state.data.map(n => n.wine_id) }));
-      return;
-    }
-    this.setState({ selected: [] });
-  };
-
-  wineColor = (color) => {
-    switch (color) {
-      case 'Red':
-        color = <img src={redwineicon} title='Red' alt="Red Wine" style={{ width: 50, height: 50 }}></img>
-        break;
-      case 'White':
-        color = <img src={whitewineicon} title='White' alt="White Wine" style={{ width: 50, height: 50 }}></img>
-        break;
-      case 'Pink':
-        color = <img src={pinkwineicon} title='Pink' alt="Pink Wine" style={{ width: 50, height: 50 }}></img>
-        break;
-      default:
-        color = ''
-    }
-    return color;
+    console.log('THIS.PROPS.USER-ID: ', this.props);
+    API.getUser(this.props.user._id)
+      .then(res => {
+        console.log("get by id", res);
+        this.setState({
+          user: res.data,
+        })
+      })
   }
 
-  handleClick = (event, wine) => {
-    const { selected } = this.state;
-    const selectedIndex = selected.indexOf(wine);
-    let newSelected = [];
+handleRequestSort = (event, property) => {
+  const orderBy = property;
+  let order = 'desc';
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, wine);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-    this.setState({ selected: newSelected });
-    console.log(newSelected)
-  };
+  if (this.state.orderBy === property && this.state.order === 'desc') {
+    order = 'asc';
+  }
 
-  handleChangePage = (event, page) => {
-    this.setState({ page });
-  };
+  this.setState({ order, orderBy });
+};
 
-  handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
-  };
+handleSelectAllClick = event => {
+  if (event.target.checked) {
+    this.setState(state => ({ selected: state.data.map(n => n.wine_id) }));
+    return;
+  }
+  this.setState({ selected: [] });
+};
 
-  isSelected = id => this.state.selected.indexOf(id) !== -1;
+wineColor = (color) => {
+  switch (color) {
+    case 'Red':
+      color = <img src={redwineicon} title='Red' alt="Red Wine" style={{ width: 50, height: 50 }}></img>
+      break;
+    case 'White':
+      color = <img src={whitewineicon} title='White' alt="White Wine" style={{ width: 50, height: 50 }}></img>
+      break;
+    case 'Pink':
+      color = <img src={pinkwineicon} title='Pink' alt="Pink Wine" style={{ width: 50, height: 50 }}></img>
+      break;
+    default:
+      color = ''
+  }
+  return color;
+}
 
-  render() {
-    const { classes, data } = this.props;
-    const { order, orderBy, selected, rowsPerPage, page } = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+handleClick = (event, wine) => {
+  const { selected } = this.state;
+  const selectedIndex = selected.indexOf(wine);
+  let newSelected = [];
 
-    return (
-      <Paper className={classes.root}>
-        <EnhancedTableToolbar numSelected={selected.length} handleFavoriteClick={this.handleFavoriteClick} />
-        <div className={classes.tableWrapper}>
-          <Table className={classes.table} aria-labelledby="tableTitle">
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={this.handleSelectAllClick}
-              onRequestSort={this.handleRequestSort}
-              rowCount={data.length}
-            />
-            <TableBody>
-              {stableSort(data, getSorting(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map(n => {
-                  const isSelected = this.isSelected(n.wine);
-                  return (
-                    <TableRow
-                      hover
-                      onClick={event => this.handleClick(event, n.wine)}
-                      role="checkbox"
-                      aria-checked={isSelected}
-                      tabIndex={-1}
-                      key={n.wine_id}
-                      selected={isSelected}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox checked={isSelected} />
-                      </TableCell>
-                      <TableCell>{this.wineColor(n.color)}</TableCell>
-                      <TableCell>{n.wine}</TableCell>
-                      <TableCell numeric>{n.vintage}</TableCell>
-                      <TableCell>{n.appellation}, {n.country}</TableCell>
-                      <TableCell numeric>{n.score}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 49 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </div>
-        <TablePagination
-          component="div"
-          count={data.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          backIconButtonProps={{
-            'aria-label': 'Previous Page',
-          }}
-          nextIconButtonProps={{
-            'aria-label': 'Next Page',
-          }}
-          onChangePage={this.handleChangePage}
-          onChangeRowsPerPage={this.handleChangeRowsPerPage}
-        />
-      </Paper>
+  if (selectedIndex === -1) {
+    newSelected = newSelected.concat(selected, wine);
+  } else if (selectedIndex === 0) {
+    newSelected = newSelected.concat(selected.slice(1));
+  } else if (selectedIndex === selected.length - 1) {
+    newSelected = newSelected.concat(selected.slice(0, -1));
+  } else if (selectedIndex > 0) {
+    newSelected = newSelected.concat(
+      selected.slice(0, selectedIndex),
+      selected.slice(selectedIndex + 1),
     );
   }
+  this.setState({ selected: newSelected });
+  console.log(newSelected)
+};
+
+handleFavoriteClick = event => {
+  event.preventDefault();
+  let fav = {
+    wine: this.state.selected
+  }
+
+  let favs = this.state.favs
+  favs.push(fav);
+
+  this.setState({ favs })
+
+  let user = this.state.user
+  user.favs = this.state.favs
+
+  this.setState({ user })
+
+  console.log("fav data", this.state.favs, this.state.user);
+
+  API.updateUser(this.state.user._id, this.state.user)
+}
+
+handleChangePage = (event, page) => {
+  this.setState({ page });
+};
+
+handleChangeRowsPerPage = event => {
+  this.setState({ rowsPerPage: event.target.value });
+};
+
+isSelected = id => this.state.selected.indexOf(id) !== -1;
+
+render() {
+  const { classes, data } = this.props;
+  const { order, orderBy, selected, rowsPerPage, page } = this.state;
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+
+  return (
+    <Paper className={classes.root}>
+      <EnhancedTableToolbar numSelected={selected.length} handleFavoriteClick={this.handleFavoriteClick} />
+      <div className={classes.tableWrapper}>
+        <Table className={classes.table} aria-labelledby="tableTitle">
+          <EnhancedTableHead
+            numSelected={selected.length}
+            order={order}
+            orderBy={orderBy}
+            onSelectAllClick={this.handleSelectAllClick}
+            onRequestSort={this.handleRequestSort}
+            rowCount={data.length}
+          />
+          <TableBody>
+            {stableSort(data, getSorting(order, orderBy))
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map(n => {
+                const isSelected = this.isSelected(n.wine);
+                return (
+                  <TableRow
+                    hover
+                    onClick={event => this.handleClick(event, n.wine)}
+                    role="checkbox"
+                    aria-checked={isSelected}
+                    tabIndex={-1}
+                    key={n.wine_id}
+                    selected={isSelected}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox checked={isSelected} />
+                    </TableCell>
+                    <TableCell>{this.wineColor(n.color)}</TableCell>
+                    <TableCell>{n.wine}</TableCell>
+                    <TableCell numeric>{n.vintage}</TableCell>
+                    <TableCell>{n.appellation}, {n.country}</TableCell>
+                    <TableCell numeric>{n.score}</TableCell>
+                  </TableRow>
+                );
+              })}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 49 * emptyRows }}>
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <TablePagination
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        backIconButtonProps={{
+          'aria-label': 'Previous Page',
+        }}
+        nextIconButtonProps={{
+          'aria-label': 'Next Page',
+        }}
+        onChangePage={this.handleChangePage}
+        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+      />
+    </Paper>
+  );
+}
 }
 
 EnhancedTable.propTypes = {
