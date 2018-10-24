@@ -11,7 +11,12 @@ const NoteSchema = new Schema({
 });
 
 const FavSchema = new Schema({
-  wine: { type: String, required: true },
+  wine: { type: String },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  synopsis: { type: String },
+  image: { type: String },
+  date: { type: Date, default: Date.now }
 });
 
 const FriendSchema = new Schema({

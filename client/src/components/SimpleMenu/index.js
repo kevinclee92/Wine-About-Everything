@@ -10,6 +10,7 @@ import API from "../../utils/API";
 class SimpleMenu extends React.Component {
   state = {
     anchorEl: null,
+    user: {}
   };
 
   handleClick = event => {
