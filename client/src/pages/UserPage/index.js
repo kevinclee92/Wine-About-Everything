@@ -108,14 +108,7 @@ class UserPage extends Component {
         }
       };
 
-      isFavs = fav => {
-        let title = this.props.favs.title
-        let description = this.state.favs.fav.description
-        let wine = this.state.user.favs.fav ? fav.wine : title + 'by' + description
-        return wine
-      }
-
-            
+      
     render() {
     return (
         <div className="userBG" style={{marginBottom: 80}}>
@@ -166,11 +159,11 @@ class UserPage extends Component {
               <List>
                 {this.state.favs.map(fav => (
                   <ListItem key={fav._id}>
-                    <Link to={"/favs/" + fav._id}>
+                    {/* <Link to={"/favs/" + fav._id}> */}
                       <strong>                        
                         {fav.wine} {fav.title} by {fav.description}        
                       </strong>
-                    </Link>
+                    {/* </Link> */}
                     <DeleteBtn onClick={() => this.deleteFav(fav._id)} />
                   </ListItem>
                 ))}
