@@ -1,8 +1,8 @@
-# WaE - Wine About Everything!
+# wAe - Wine About Everything!
 
 Wine About Everything (WaE) is a full-stack web-app that where users will come to build a community of wine enthusiasts. It won't matter your level of "expertise" as it will be community based and driven. It will allow users to save notes on anything they'd like, search wines, save any searched wines to their favorite list. This data will show when the user logs in. Users will need to login or create a new user which will be stored in the database.
 
-![WaE](/src/images/wae_scrnsht.png)
+![wAe](/client/src/images/wae_scrnsht.png)
 
 ## Getting Started
 
