@@ -13,8 +13,8 @@ class Detail extends Component {
   // The note id for this route can be accessed using this.props.match.params.id
   componentDidMount() {
     API.getUser(this.props.match.params.id) 
-    .then(res => console.log("!!!", res.data.notes._id))
-    // .then(res => this.setState({notes: res.data.notes}))
+    // .then(res => console.log("!!!", res.data.notes))
+    .then(res => this.setState({notes: res.data.notes}))
   }
 
   render() {
@@ -39,7 +39,7 @@ class Detail extends Component {
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Notes</Link>
+            <Link to="/user">← Back to Notes</Link>
           </Col>
         </Row>
       </Container>

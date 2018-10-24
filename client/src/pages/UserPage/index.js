@@ -42,7 +42,7 @@ class UserPage extends Component {
           
         let notes = this.state.notes
         console.log("1st notes:", notes);
-        notes.filter(note => note._id == id)
+        notes.filter(note => note._id === id)
         console.log("2nd notes:", notes);        
         this.setState({ notes })
 
@@ -91,8 +91,10 @@ class UserPage extends Component {
         event.preventDefault();
         if (this.state.title && this.state.description) {
           let fav = {
+            wine: this.state.wine,
             title: this.state.title,
             description: this.state.description,
+            synopsis: this.state.synopsis,
             image: this.state.image,
             date: this.state.date
           }
@@ -118,7 +120,7 @@ class UserPage extends Component {
             <h3 className="welcomeText">Welcome {this.state.user.name}</h3>
           </div>
             <div className="avatar">
-            <Avatar style={{height:60, width:60, marginBottom:20}} src={this.state.user.image}/>
+            <Avatar style={{height:80, width:80, marginBottom:20}} src={this.state.user.image}/>
             </div>
         </Row>
         <Row>
@@ -130,9 +132,7 @@ class UserPage extends Component {
               <h3>My Notes...</h3>
             
             {this.state.user.notes ? (            
-
-              <List>
-                
+              <List>                
                 {this.state.user.notes.map(note => (
                   <ListItem key={note._id}>
                     <Link to={"/notes/" + note._id}>
@@ -160,8 +160,7 @@ class UserPage extends Component {
                   <ListItem key={fav._id}>
                     <Link to={"/favs/" + fav._id}>
                       <strong>                        
-                        {fav.wine}
-                        <Avatar img="true" className="favImage" src={fav.image} alt={fav.description} />
+                        {fav.wine}             
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteFav(fav._id)} />
@@ -179,25 +178,28 @@ class UserPage extends Component {
         <Col size="lg-12 md-12 sm-12">
         <form>
               <Input
-                style={{marginTop: 5}}
+                style={{marginTop: 5, background: "lightgray"}}
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
                 placeholder="Title - Note/Place/Wine (required)"
               />
               <Input
+                style={{background: "lightgray"}}
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
                 placeholder="Note Author/Winery/Vineyard (required)"
               />
               <Input
+                style={{background: "lightgray"}}
                 placeholder="Picture Link (Optional)"
                 name="image"
                 value={this.state.image}
                 onChange={this.handleInputChange}
               />
               <TextArea
+                style={{background: "lightgray", fontColor: "white"}}
                 value={this.state.synopsis}
                 onChange={this.handleInputChange}
                 name="synopsis"
