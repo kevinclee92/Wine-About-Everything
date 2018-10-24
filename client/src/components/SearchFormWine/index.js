@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import LoadingIcon from '../LoadingIcon';
@@ -80,12 +79,12 @@ export default class SearchFormWine extends React.Component {
         const { name, vintage, country } = this.state;
         let vintageOpt = null;
         let countryOpt = null;
-        if (vintage != '') {
+        if (vintage !== '') {
             vintageOpt = '&vintage=' + vintage;
         } else {
             vintageOpt = ''
         }
-        if (country != '') {
+        if (country !== '') {
             countryOpt = '&country=' + country;
         } else {
             countryOpt = ''
@@ -184,7 +183,7 @@ export default class SearchFormWine extends React.Component {
                             <br />
                             {this.state.loading}
 
-                            {this.state.isHidden && <ResultTable props={this.props} data={this.state.wineResults} />}
+                            {this.state.isHidden && <ResultTable {...this.props} data={this.state.wineResults} />}
 
                         </div>
                     </div>
