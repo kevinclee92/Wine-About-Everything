@@ -69,10 +69,6 @@ h1, h3 {
   }
 }
 
-.form-control {
-    color: lightgray;
-}
-
 .formCol {
     display: flex;
     justify-content: center;
