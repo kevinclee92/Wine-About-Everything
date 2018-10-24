@@ -1,16 +1,17 @@
 .bgDiv { 
-  background: url('../../images/brokenGlass.jpeg') no-repeat center; 
+  background: url('https://media.giphy.com/media/1BXa2alBjrCXC/giphy.gif') no-repeat center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 643px;
+  height: 550px;
   }
 
 .noMatchHead {
   font-size: 35px;
   text-align: justify;
-  padding-top: 100px;
+  padding-top: 80px;
+  color: red;
 }
 
 .noMatchFoot {
@@ -18,22 +19,22 @@
   margin-top: 450px;
   right: 5px;
   text-align: right;
-  color: white;
+  color: red;
  }
 
 @media (min-width: 1281px) {
     
   .noMatchHead {
     text-align: left;
-    color: black;
+    color: red;
     padding-top: 250px;
     font-size: 90px;
   }
     
   .noMatchFoot {
     font-size: 50px;
-    color: white;
-    margin-top: 500px;
+    color: red;
+    margin-top: 300px;
   }
 
   .bgDiv {

@@ -61,7 +61,7 @@ function ButtonAppBar(props) {
           <Button onClick={handleLogOut} color="inherit">Logout</Button>
           </Link> */}
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-          <SimpleMenu />
+          <SimpleMenu {...props}/>
           </IconButton>
         </Toolbar>
       </AppBar>
