@@ -28,20 +28,22 @@
 
 .logo {
     max-height: auto;
-    width: 300px;
     margin-left: auto;
     margin-right: auto;
     display: block;
+    max-width: 300px;
+    min-width: 200px;
 }
 .homepageContainer {
     width: auto;
+    padding: 0;
 }
 
 .loginContainer {
     height: 500px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    display: block;
     margin: 0 auto;
-    max-width: 40%;
+    min-width: 200px;
+    max-width: 320px;
 }

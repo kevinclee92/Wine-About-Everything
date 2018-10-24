@@ -123,11 +123,11 @@ class RegisterForm extends React.Component {
                             />
                         </div>
                         <div className="additionalReg">
-                            <h5>Additional Information</h5>
+                            <h5>More Info</h5>
                             <TextField
                                     style={{margin: 15}}
                                     id="image"
-                                    label="Profile Picture Link"
+                                    label="Profile Pic Link"
                                     margin="normal"
                                     name="image"
                                     value={this.state.user.image}
