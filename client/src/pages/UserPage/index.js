@@ -6,11 +6,10 @@ import API from "../../utils/API";
 import './userpage.css';
 import Jumbotron from "../../components/Jumbotron";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, TextArea, FormBtn,  } from "../../components/Form";
 import DeleteBtn from "../../components/DeleteBtn";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer"
-
 class UserPage extends Component {
     state = {
         user: {},
@@ -109,7 +108,7 @@ class UserPage extends Component {
             </div>
         </Row>
         <Row>
-        <Col size="lg-12 md-6 sm-12">
+        <Col size="lg-6 md-6 sm-12">
             
             <Jumbotron>
               <h3>Notes On My List</h3>
@@ -133,7 +132,7 @@ class UserPage extends Component {
               <h3>No Results to Display</h3>
             )}</Jumbotron>        
         </Col>
-        <Col size="md-6 sm-12">
+        <Col size="lg-6 md-6 sm-12">
         <Jumbotron>
               <h3>My Favorite Places I've Visited</h3>
             
@@ -158,26 +157,32 @@ class UserPage extends Component {
         </Col>
         </Row>
         <Row>
-        <Col size="md-6 sm-12">
+        <Col size="lg-12 md-12 sm-12">
         <form>
               <Input
-                style={{marginTop: 20}}
+                style={{marginTop: 5}}
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
-                placeholder="Title (required)"
+                placeholder="Note/Place Title (required)"
               />
               <Input
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
-                placeholder="Description (required)"
+                placeholder="Short Description (required)"
+              />
+              <Input
+                placeholder="Picture Link (optional)"
+                name="image"
+                value={this.state.image}
+                onChange={this.handleInputChange}
               />
               <TextArea
                 value={this.state.synopsis}
                 onChange={this.handleInputChange}
                 name="synopsis"
-                placeholder="Synopsis (Optional)"
+                placeholder="Quick Notes (Optional)"
               />
               <FormBtn
                 disabled={!(this.state.description && this.state.title)}
