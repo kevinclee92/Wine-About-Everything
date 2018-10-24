@@ -18,6 +18,8 @@
     border-radius: 25px;
     padding: 12px;
     background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 auto;
+    max-width: 40%;
 }
 
 .twentyone {
