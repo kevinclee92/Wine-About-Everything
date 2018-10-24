@@ -290,6 +290,7 @@ handleFavoriteClick = event => {
   console.log("fav data", this.state.favs, this.state.user);
 
   API.updateUser(this.state.user._id, this.state.user)
+  alert("Wine added to your Favorites");
 }
 
 handleChangePage = (event, page) => {

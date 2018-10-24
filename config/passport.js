@@ -44,13 +44,13 @@ passport.use('login', new LocalStrategy({
         if (!user){
           console.log('User Not Found with username '+ username);
           return done(null, false, 
-                req.flash('message', 'User Not found.'));                 
+                console.log('User Not found.'));                 
         }
         // User exists but wrong password, log the error 
         if (!isValidPassword(user, password)){
           console.log('Invalid Password');
           return done(null, false, 
-              req.flash('message', 'Invalid Password'));
+              console.log('Invalid Password'));
         }
         // User and password both match, return user from 
         // done method which will be treated like success
@@ -87,7 +87,7 @@ passport.use('login', new LocalStrategy({
             // check to see if theres already a user with that email
             if (user) {
                 console.log("User already exists")
-                return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+                return done(null, false, console.log('signupMessage', 'That username is already taken.'));
             } else {
 
                 // if there is no user with that email

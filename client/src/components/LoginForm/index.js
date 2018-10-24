@@ -71,7 +71,7 @@ class LoginForm extends React.Component {
                         label="Username"
                         margin="normal"
                         name="username"
-                        style={{marginRight: "15px"}}
+                        style={{marginRight: "15px", marginTop: "0px"}}
                         value={this.state.user.username}
                         onChange={this.handleChange}
                         />
@@ -81,6 +81,7 @@ class LoginForm extends React.Component {
                         type="password"
                         name="password"
                         margin="normal"
+                        style={{marginTop: "0px"}}
                         value={this.state.user.password}
                         onChange={this.handleChange}
                         />
