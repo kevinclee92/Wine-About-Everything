@@ -50,5 +50,17 @@ router
   .delete(usersController.remove)
   .delete(usersController.removeNote);
   
+  // "/api/users/logout"
+  router.route('/logout')
+  .post((req, res) => {
+    if (req.user) {
+        console.log("LOGGIN OUT: ", req.user)
+        req.logout()
+        res.send({ msg: 'logging out' })
+    } else {
+        res.send({ msg: 'no user to log out' })
+    }
+  });
+
 router.route("/stored").get(isAuthenticated, usersController.findById);
 module.exports = router;
