@@ -47,11 +47,6 @@ const countries = [
     { value: 'South Africa', label: 'South Africa' },
     { value: 'Chile', label: 'Chile' },
     { value: 'Germany', label: 'Germany' },
-    { value: 'Portugal', label: 'Portugal' },
-    { value: 'Russia', label: 'Russia' },
-    { value: 'Romania', label: 'Romania' },
-    { value: 'Brazil', label: 'Brazil' },
-    { value: 'Hungary', label: 'Hungary' },
 ];
 
 // COMPONENT
