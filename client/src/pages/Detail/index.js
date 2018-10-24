@@ -12,8 +12,9 @@ class Detail extends Component {
   // e.g. http://localhost:3000/notes/:id
   // The note id for this route can be accessed using this.props.match.params.id
   componentDidMount() {
-    API.getNote(this.props.match.params.id) 
-    .then(res => this.setState({note: res.data}))
+    API.getUser(this.props.match.params.id) 
+    .then(res => console.log("!!!", res.data.notes._id))
+    // .then(res => this.setState({notes: res.data.notes}))
   }
 
   render() {

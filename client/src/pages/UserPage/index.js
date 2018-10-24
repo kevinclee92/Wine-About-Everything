@@ -38,9 +38,22 @@ class UserPage extends Component {
       };
     
       deleteNote = id => {
-        API.deleteNote(id)
-          .then(res => this.state.user)
-          .catch(err => console.log(err));
+        console.log("delete note", id);
+          
+        let notes = this.state.notes
+        console.log("1st notes:", notes);
+        notes.filter(note => note._id == id)
+        console.log("2nd notes:", notes);        
+        this.setState({ notes })
+
+        console.log("note data", this.state.notes, this.state.user);
+        // this.setState({
+        //   notes
+        // })
+        // API.updateUser(this.state.user._id, this.state.user)
+        // .then(function(data){
+        //   console.log("updated user data:", data);              
+        // })
       };
     
       handleInputChange = event => {
@@ -57,6 +70,7 @@ class UserPage extends Component {
             title: this.state.title,
             description: this.state.description,
             synopsis: this.state.synopsis,
+            image: this.state.image,
             date: this.state.date
           }
           
@@ -96,7 +110,7 @@ class UserPage extends Component {
             
     render() {
     return (
-        <div>
+        <div className="userBG">
         <Header />
         <Container fluid>
         <Row>
@@ -111,7 +125,9 @@ class UserPage extends Component {
         <Col size="lg-6 md-6 sm-12">
             
             <Jumbotron>
-              <h3>Notes On My List</h3>
+              <div class="img"></div>
+              <Container>
+              <h3>My Notes...</h3>
             
             {this.state.user.notes ? (            
 
@@ -130,20 +146,22 @@ class UserPage extends Component {
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )}</Jumbotron>        
+            )}</Container></Jumbotron>        
         </Col>
         <Col size="lg-6 md-6 sm-12">
         <Jumbotron>
-              <h3>My Favorite Places I've Visited</h3>
+        <div class="img"></div>
+        <Container>
+              <h3>My Favorite Wines!</h3>
             
             {this.state.favs ? (
               <List>
                 {this.state.favs.map(fav => (
                   <ListItem key={fav._id}>
                     <Link to={"/favs/" + fav._id}>
-                      <strong>
-                        {fav.title} by {fav.description}
-                        <img className="favImage" src={fav.image} alt={fav.description} />
+                      <strong>                        
+                        {fav.wine}
+                        <Avatar img="true" className="favImage" src={fav.image} alt={fav.description} />
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteFav(fav._id)} />
@@ -153,6 +171,7 @@ class UserPage extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
+            </Container>
         </Jumbotron>
         </Col>
         </Row>
@@ -164,16 +183,16 @@ class UserPage extends Component {
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
-                placeholder="Note/Place Title (required)"
+                placeholder="Title - Note/Place/Wine (required)"
               />
               <Input
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
-                placeholder="Short Description (required)"
+                placeholder="Note Author/Winery/Vineyard (required)"
               />
               <Input
-                placeholder="Picture Link (optional)"
+                placeholder="Picture Link (Optional)"
                 name="image"
                 value={this.state.image}
                 onChange={this.handleInputChange}
@@ -194,7 +213,7 @@ class UserPage extends Component {
                 disabled={!(this.state.description && this.state.title)}
                 onClick={this.handleFormSubmitFavs}
               >
-                Submit Favorite
+                Submit Favorite Wine
               </FormBtn>
             </form>
         </Col>

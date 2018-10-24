@@ -10,8 +10,7 @@ const SearchPage = (props) => {
             <div className="searchWrap">
 
                 <Header />
-                <SearchFormWine {...props}>
-                </SearchFormWine>
+                <SearchFormWine {...props} />
             </div>
             
         </div>

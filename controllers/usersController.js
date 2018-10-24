@@ -55,7 +55,7 @@ module.exports = {
   },
   removeNote: function(req, res) {
     db.User
-      .findById({ _id: req.params.user.note.id })
+      .findOneAndUpdate({ _id: req.params.user.note.id }, req.body, {new: true})
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

@@ -28,7 +28,7 @@ function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography variant="inherit" color="inherit" className={classes.grow}>
             Welcome to Wine About Everything!
           </Typography>
           <Link to={"/user"}>
