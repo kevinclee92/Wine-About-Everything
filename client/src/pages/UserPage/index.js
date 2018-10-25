@@ -14,7 +14,6 @@ class UserPage extends Component {
         user: {},
         notes: [],
         favs: []
-
     }
 
     componentDidMount() {
@@ -127,7 +126,7 @@ class UserPage extends Component {
             
             <Jumbotron>
               <div class="img"></div>
-              <Container fluid>
+              <Container>
               <h3>My Notes...</h3>
             
             {this.state.user.notes ? (            
@@ -152,18 +151,18 @@ class UserPage extends Component {
         <Col size="lg-6 md-6 sm-12">
         <Jumbotron>
         <div class="img"></div>
-        <Container fluid>
+        <Container>
               <h3>My Favorite Wines!</h3>
             
             {this.state.favs ? (
               <List>
                 {this.state.favs.map(fav => (
                   <ListItem key={fav._id}>
-                    {/* <Link to={"/favs/" + fav._id}> */}
+                    <Link to={"/favs/" + fav._id}>
                       <strong>                        
                         {fav.wine} {fav.title} by {fav.description}        
                       </strong>
-                    {/* </Link> */}
+                    </Link>
                     <DeleteBtn onClick={() => this.deleteFav(fav._id)} />
                   </ListItem>
                 ))}
