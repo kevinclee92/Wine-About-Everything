@@ -70,7 +70,7 @@ class App extends Component {
               {...props}/>}/>
               <Route path="/user" render={(props) => <UserPage updateUser={this.updateUser} user={this.state.user} {...props}/>} />
               <Route path="/search" render={(props) => <SearchPage updateUser={this.updateUser} user={this.state.user} {...props}/>} />
-              {/* <Route path="/notes" component={Detail} /> */}
+              <Route path="/notes" component={Detail} />
               <Route exact path="/notes/:id" component={Detail} />
               <Route path="/wine101" render={(props) => <Wine101 {...props} updateUser={this.updateUser}/>} />
               <Route component={NoMatch} />
