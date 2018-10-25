@@ -12,6 +12,7 @@ export default class HomePage extends React.Component {
                     <Col size=" sm-12" className="hero">
                         <img src={require('../../images/logo_transparent.png')} alt="logoImage" className="logo"/>
                     </Col>
+                    {}
                     <Col size="sm-12" className="loginContainer">
                         <LoginForm updateUser={this.props.updateUser}/>
                     </Col>
