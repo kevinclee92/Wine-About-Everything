@@ -170,7 +170,6 @@ class SimpleGrow extends React.Component {
           </Grow>          
           
           </div>
-          <Footer/>
       </div>
     );
     

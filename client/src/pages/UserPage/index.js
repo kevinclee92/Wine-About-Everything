@@ -30,9 +30,16 @@ class UserPage extends Component {
     }
         
       deleteFav = id => {
-        API.deleteFav(id)
-          .then(res => this.state.user)
-          .catch(err => console.log(err));
+        let favs = this.state.favs;
+        console.log("1st fav", favs);
+        favs.splice(favs.indexOf(favs._id));
+        console.log("2nd favs", favs);
+        this.setState({favs: favs});
+        API.updateUser(this.state.user._id, this.state.user)
+        .then(function(data){
+          console.log("updated user data:", data  );              
+        })
+
       };
     
       deleteNote = id => {
@@ -40,18 +47,17 @@ class UserPage extends Component {
           
         let notes = this.state.notes
         console.log("1st notes:", notes);
-        notes.filter(note => note._id === id)
+        notes.splice(notes.indexOf(notes._id));
         console.log("2nd notes:", notes);        
-        this.setState({ notes })
 
-        console.log("note data", this.state.notes, this.state.user);
-        // this.setState({
-        //   notes
-        // })
-        // API.updateUser(this.state.user._id, this.state.user)
-        // .then(function(data){
-        //   console.log("updated user data:", data);              
-        // })
+        console.log("note data", this.state.notes);
+        this.setState({
+          notes: notes
+        })
+        API.updateUser(this.state.user._id, this.state.user)
+        .then(function(data){
+          console.log("updated user data:", data  );              
+        })
       };
     
       handleInputChange = event => {

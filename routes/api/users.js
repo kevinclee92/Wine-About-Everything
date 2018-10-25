@@ -36,6 +36,8 @@ router.route("/")
     }
   );
 
+// router.route("/notes").get(usersController.)
+
 router.route("/:username").get(usersController.findByUsername);
 
 // Matches with "/api/users/:id"
