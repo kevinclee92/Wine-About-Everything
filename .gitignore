@@ -2,4 +2,3 @@ node_modules
 .DS_Store
 yarn.lock
 .env
-Protecting-API-Keys-In-Node.md
