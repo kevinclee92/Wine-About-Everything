@@ -48,25 +48,37 @@ class RegisterForm extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        var currentState = this.state;
-        currentState.redirect = true;
-        this.setState({currentState})
-        // let object = {username:this.state.user.username}
-        console.log(this.props)
-        API.saveUser({
-            username: this.state.user.username,
-            password: this.state.user.password,
-            name: this.state.user.name,
-            image: this.state.user.image,
-            phone: this.state.user.phone,
-            street: this.state.user.street,
-            city: this.state.user.city,
-            state: this.state.user.state,
-            zip: this.state.user.zip,
-            email: this.state.user.email,
-            age: this.state.user.age
-        })
-        .then(this.props.history.push("/"));
+        API.getUserByUsername(this.state.user.username)
+            .then((response) => {
+                console.log("data", response.data)
+                if (response.data === null && this.state.user.age >= 21) {
+                    this.setState({error: undefined})
+                    // let object = {username:this.state.user.username}
+                    API.saveUser({
+                        username: this.state.user.username,
+                        password: this.state.user.password,
+                        name: this.state.user.name,
+                        image: this.state.user.image,
+                        phone: this.state.user.phone,
+                        street: this.state.user.street,
+                        city: this.state.user.city,
+                        state: this.state.user.state,
+                        zip: this.state.user.zip,
+                        email: this.state.user.email,
+                        age: this.state.user.age
+                    })
+                    .then(
+                        this.props.history.push("/")
+                    
+                    );
+                }
+                else if (this.state.user.age <= 21) {
+                    this.setState({error: "Sign Up Error: Not 21 Yet."})
+                }
+                else {
+                    this.setState({error: "Sign Up Error: Username already exists"})
+                }
+            })
     }
 
     render () {
@@ -75,6 +87,7 @@ class RegisterForm extends React.Component {
                 <form className="registerForm">
                     <h4>Create your account for Wine About Me</h4>
                     <p className="twentyone" style={{textAlign: "center"}}>* Must be 21 or over to sign up.</p>
+                    {this.state.error && <h2 className="errormsg">{this.state.error}</h2>}
                     <div className="registerformWrap">
                         <div className="requiredReg">
                             <h5>Required</h5>

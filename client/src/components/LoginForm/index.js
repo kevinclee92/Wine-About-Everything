@@ -53,6 +53,7 @@ class LoginForm extends React.Component {
         }).catch(error => {
             console.log('login error: ')
             console.log(error);
+            this.setState({error: "Login Error. Check your username and password."})
             
         })
 
@@ -63,7 +64,8 @@ class LoginForm extends React.Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
         return (
-           
+                <div>
+                    {this.state.error && <h2 className="errormsg">{this.state.error}</h2>}
                     <form className="loginFormStyle">
                         <p className="loginTitle"><span className="loginW">LOG IN</span> or <span className="signupW">SIGN UP</span></p>
                         <hr />
@@ -96,6 +98,9 @@ class LoginForm extends React.Component {
                         <p className="twentyone">* Must be 21 or over. Please drink responsibly.</p>
 
                     </form>
+                </div>
+           
+                    
             
             
         );

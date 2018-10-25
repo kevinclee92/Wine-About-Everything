@@ -19,12 +19,8 @@ var isAuthenticated = function (req, res, next) {
 // Matches with "/api/users"
 router.route("/")
 .get(usersController.findAll)
-.post(passport.authenticate('signup', function() {
-  console.log("is it working?")
-},{
-    successRedirect: '/',
-    failureRedirect: '/signup',
-    failureFlash : true
+.post(passport.authenticate('signup', function(res) {
+  console.log("response to signup", res);
 }))
 
 //   .post(usersController.create)
