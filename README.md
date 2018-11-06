@@ -4,6 +4,11 @@ Wine About Everything (WaE) is a full-stack web-app that where users will come t
 
 ![wAe](/client/src/images/wae_scrnsht.png)
 
+## Getting Started
+
+* Visit the live [Heroku Site](https://whispering-hollows-18253.herokuapp.com/)
+    * Please be patient. If no one has visited it recently it takes a second to spin up the server.
+* You will either need to create a new user or log in if you currently have one.
     
 
 ## Built With

@@ -50,7 +50,7 @@ const countries = [
 ];
 
 // COMPONENT
-export default class SearchFormWine extends React.Component {
+class SearchFormWine extends React.Component {
 
     //STATE
     state = {
@@ -107,7 +107,7 @@ export default class SearchFormWine extends React.Component {
 
     // PAGE RENDER
     render() {
-        const { classes } = this.props;
+        // const { classes } = this.props;
 
         return (
             <div>
@@ -187,3 +187,10 @@ export default class SearchFormWine extends React.Component {
         );
     }
 }
+
+
+SearchFormWine.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(SearchFormWine);
