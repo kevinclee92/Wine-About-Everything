@@ -276,7 +276,9 @@ handleFavoriteClick = event => {
   let fav = {
     wine: this.state.selected[0],
     wine2: this.state.selected[1],
-    wine3: this.state.selected[2]
+    wine3: this.state.selected[2],
+    wine4: this.state.selected[3],
+    wine5: this.state.selected[4]
   }
 
   let favs = this.state.favs
