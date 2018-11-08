@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Paper from '@material-ui/core/Paper';
-import {Link} from 'react-router-dom';
 import LoginForm from '../../components/LoginForm';
+// import {Link} from 'react-router-dom';
 
 const styles = {
     paper: {

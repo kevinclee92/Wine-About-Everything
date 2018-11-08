@@ -13,8 +13,11 @@ const NoteSchema = new Schema({
 
 const FavSchema = new Schema({
   wine: { type: String },
-  title: { type: String, required: true },
-  description: { type: String, required: true },
+  wine2: { type: String },
+  wine3: { type: String },
+  wine4: { type: String },
+  winery: { type: String },
+  region: { type: String },
   synopsis: { type: String },
   image: { type: String },
   date: { type: Date, default: Date.now }
