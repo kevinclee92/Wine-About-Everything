@@ -17,7 +17,7 @@ class UserPage extends Component {
     }
 
     componentDidMount() {
-       console.log(this.props.user._id);
+      console.log(this.props.user._id);
       API.getUser(this.props.user._id)
       .then(res => {
         console.log("get by id", res);
@@ -26,6 +26,7 @@ class UserPage extends Component {
           notes: res.data.notes,
           favs: res.data.favs
         })
+        console.log("USER NOTES: ", this.state.notes)
       })  
     }
         
@@ -47,7 +48,7 @@ class UserPage extends Component {
           
         let notes = this.state.notes
         console.log("1st notes:", notes);
-        notes.splice(notes.indexOf(notes._id));
+        notes.splice(this.state.notes.indexOf(this.state.notes.id));
         console.log("2nd notes:", notes);        
 
         console.log("note data", this.state.notes);
@@ -56,7 +57,7 @@ class UserPage extends Component {
         })
         API.updateUser(this.state.user._id, this.state.user)
         .then(function(data){
-          console.log("updated user data:", data  );              
+          console.log("updated user data:", data);              
         })
       };
     
@@ -69,25 +70,38 @@ class UserPage extends Component {
     
       handleFormSubmitNote = event => {
         event.preventDefault();
-        if (this.state.title && this.state.description) {
+        if (this.state.title && this.state.description && this.state.synopsis) {
           let note = {
             title: this.state.title,
             description: this.state.description,
             synopsis: this.state.synopsis,
-            image: this.state.image,
-            date: this.state.date
+            from: this.state.user.username
           }
+          API.getUserByUsername(this.state.description)
+            .then(function(data) {
+              let endUser = data;
+              console.log("message end-user data: ", endUser.data);
+              endUser.data.notes.push(note);
+              console.log("data._id", data.data._id)
+              API.updateUser(data.data._id, endUser.data)
+                .then(function(updatedData) {
+                  console.log("Message Sent Updated", updatedData)
+                })
+              
+            })
           
-          let notes = this.state.notes
-          notes.push(note)
+          // let notes = this.state.notes
+          // notes.push(note)
 
-          this.setState({
-            notes
-          })
+          // this.setState({
+          //   notes
+          // })
+
           API.updateUser(this.state.user._id, this.state.user)
           .then(function(data){
             console.log("updated user data:", data);              
           })
+          alert("message sent!")
         }
       };
 
@@ -133,18 +147,25 @@ class UserPage extends Component {
             <Jumbotron>
               <div class="img"></div>
               <Container>
-              <h3>My Notes...</h3>
+              <h3>My Messages</h3>
             
             {this.state.user.notes ? (            
               <List>                
                 {this.state.user.notes.map(note => (
-                  <ListItem key={note._id}>
-                    <Link to={"/notes/" + note._id}>
-                      <strong>
-                        {note.title} by {note.description}
-                      </strong>
-                    </Link>
+                  <ListItem key={note._id}> 
                     <DeleteBtn onClick={() => this.deleteNote(note._id)} />
+                    <div style={{color: "darkgrey"}}>
+                      {/* <h6><span style={{color: "darkgreen", fontSize: "20px", marginRight: "20px"}}>{note.title}</span> from user: <span style={{color: "blue", fontSize: "20px", marginLeft: "20px"}}>{note.from}</span></h6> */}
+                      <h6 style={{textAlign: "left"}}>Message From User:&nbsp;&nbsp;&nbsp; <span style={{fontSize: "20px", color: "black"}}>{note.from}</span></h6>
+                      <h6 style={{textAlign: "left"}}>Title:&nbsp;&nbsp;&nbsp; <span style={{color: "black", fontSize: "20px"}}>{note.title}</span></h6>
+                    </div>
+                    <hr />
+                    <div>
+                      <h6 style={{textAlign: "left", color: "darkgrey"}}>Message:&nbsp;&nbsp;&nbsp; <span style={{color: "black", fontSize: "20px"}}>{note.synopsis}</span></h6>
+                    </div>
+                      {/* <strong>
+                        {note.title} by {note.description}
+                      </strong> */}
                   </ListItem>
                 ))}
               </List>
@@ -158,7 +179,7 @@ class UserPage extends Component {
         <Jumbotron>
         <div class="img"></div>
         <Container>
-              <h3>My Favorite Wines!</h3>
+              <h3>Wine Favorites</h3>
             
             {this.state.favs ? (
               <List>
@@ -188,41 +209,41 @@ class UserPage extends Component {
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
-                placeholder="Title - Note/Place/Wine (required)"
+                placeholder="Direct Message Title"
               />
               <Input
                 style={{background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
-                placeholder="Note Author/Winery/Vineyard (required)"
+                placeholder="to: (username)"
               />
-              <Input
+              {/* <Input
                 style={{background: "rgb(148, 148, 194)", color: "black"}}
                 placeholder="Picture Link (Optional)"
                 name="image"
                 value={this.state.image}
                 onChange={this.handleInputChange}
-              />
+              /> */}
               <TextArea
                 style={{background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.synopsis}
                 onChange={this.handleInputChange}
                 name="synopsis"
-                placeholder="Quick Notes (Optional)"
+                placeholder="Message"
               />
               <FormBtn
                 disabled={!(this.state.description && this.state.title)}
                 onClick={this.handleFormSubmitNote}
               >
-                Submit Note
+                Send Direct Message
               </FormBtn>
-              <FormBtn
+              {/* <FormBtn
                 disabled={!(this.state.description && this.state.title)}
                 onClick={this.handleFormSubmitFavs}
               >
                 Submit Favorite Wine
-              </FormBtn>
+              </FormBtn> */}
             </form>
         </Col>
         </Row>

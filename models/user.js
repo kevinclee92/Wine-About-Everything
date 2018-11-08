@@ -7,7 +7,8 @@ const NoteSchema = new Schema({
   description: { type: String, required: true },
   synopsis: { type: String },
   image: { type: String },
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  from: {type: String}
 });
 
 const FavSchema = new Schema({

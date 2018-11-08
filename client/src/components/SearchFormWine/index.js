@@ -89,7 +89,7 @@ class SearchFormWine extends React.Component {
         axios.get(wineQuery, {
             headers: {
                 'Accept': 'application/json',
-                'Authorization': 'Token a6a9d88e743da91815c06327dfa7ea9c484f70c7',
+                'Authorization': 'Token 30e89aac72cb8c9eeb663b1b611ad66d612628f7',
             }
         })
             .then(response => {

@@ -32,6 +32,9 @@ export default {
   updateUser: function(id, userdata) {
     return axios.put("/api/users/id/" + id, userdata)
   },
+  updateUserByUsername: function(username, data) {
+    return axios.put("/api/users/" + username, data);
+  },
   getStoredUser: function() {
     return axios.get("/api/users/stored");
   },
