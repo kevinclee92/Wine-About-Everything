@@ -46,19 +46,26 @@ class UserPage extends Component {
       deleteNote = id => {
         console.log("delete note", id);
           
-        let notes = this.state.notes
-        console.log("1st notes:", notes);
-        notes.splice(this.state.notes.indexOf(this.state.notes.id));
-        console.log("2nd notes:", notes);        
+        let notes = this.state.notes;
+        var selectedNote;
+        console.log("initial notes:", notes);
 
-        console.log("note data", this.state.notes);
-        this.setState({
-          notes: notes
-        })
-        API.updateUser(this.state.user._id, this.state.user)
-        .then(function(data){
-          console.log("updated user data:", data);              
-        })
+        for(let i = 0; i < notes.length; i++) {
+          if (id === notes[i]._id) {
+            selectedNote = notes[i];
+            notes.splice(notes.indexOf(selectedNote), 1);
+            console.log("updated notes", notes);
+            this.setState({
+              notes: notes
+            });
+            API.updateUser(this.state.user._id, this.state.user)
+              .then(function(data){
+                console.log("updated user data:", data);             
+            });
+            break;
+              
+          }
+        }
       };
     
       handleInputChange = event => {
@@ -81,7 +88,7 @@ class UserPage extends Component {
             .then(function(data) {
               let endUser = data;
               console.log("message end-user data: ", endUser.data);
-              endUser.data.notes.push(note);
+              endUser.data.notes.unshift(note);
               console.log("data._id", data.data._id)
               API.updateUser(data.data._id, endUser.data)
                 .then(function(updatedData) {
@@ -155,17 +162,13 @@ class UserPage extends Component {
                   <ListItem key={note._id}> 
                     <DeleteBtn onClick={() => this.deleteNote(note._id)} />
                     <div style={{color: "darkgrey"}}>
-                      {/* <h6><span style={{color: "darkgreen", fontSize: "20px", marginRight: "20px"}}>{note.title}</span> from user: <span style={{color: "blue", fontSize: "20px", marginLeft: "20px"}}>{note.from}</span></h6> */}
-                      <h6 style={{textAlign: "left"}}>Message From User:&nbsp;&nbsp;&nbsp; <span style={{fontSize: "20px", color: "black"}}>{note.from}</span></h6>
                       <h6 style={{textAlign: "left"}}>Title:&nbsp;&nbsp;&nbsp; <span style={{color: "black", fontSize: "20px"}}>{note.title}</span></h6>
+                      <h6 style={{textAlign: "left"}}>From User:&nbsp;&nbsp;&nbsp; <span style={{fontSize: "20px", color: "black"}}>{note.from}</span></h6>
                     </div>
                     <hr />
                     <div>
-                      <h6 style={{textAlign: "left", color: "darkgrey"}}>Message:&nbsp;&nbsp;&nbsp; <span style={{color: "black", fontSize: "20px"}}>{note.synopsis}</span></h6>
+                      <h6 style={{textAlign: "left", color: "darkgrey"}}>Message:&nbsp;&nbsp;&nbsp; <span style={{color: "black", fontSize: "15px"}}>{note.synopsis}</span></h6>
                     </div>
-                      {/* <strong>
-                        {note.title} by {note.description}
-                      </strong> */}
                   </ListItem>
                 ))}
               </List>
@@ -203,28 +206,22 @@ class UserPage extends Component {
         </Row>
         <Row>
         <Col size="lg-12 md-12 sm-12">
+        <h3 style={{marginBottom: "30px"}}>Direct Message</h3>
         <form>
               <Input
                 style={{marginTop: 5, background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.title}
                 onChange={this.handleInputChange}
                 name="title"
-                placeholder="Direct Message Title"
+                placeholder="Title"
               />
               <Input
                 style={{background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
-                placeholder="to: (username)"
+                placeholder="Send Message To: (username)"
               />
-              {/* <Input
-                style={{background: "rgb(148, 148, 194)", color: "black"}}
-                placeholder="Picture Link (Optional)"
-                name="image"
-                value={this.state.image}
-                onChange={this.handleInputChange}
-              /> */}
               <TextArea
                 style={{background: "rgb(148, 148, 194)", color: "black"}}
                 value={this.state.synopsis}
