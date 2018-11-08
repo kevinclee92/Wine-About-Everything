@@ -8,7 +8,7 @@ import Jumbotron from "../../components/Jumbotron";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn,  } from "../../components/Form";
 import DeleteBtn from "../../components/DeleteBtn";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 class UserPage extends Component {
     state = {
         user: {},
@@ -114,13 +114,13 @@ class UserPage extends Component {
 
       handleFormSubmitFavs = event => {
         event.preventDefault();
-        if (this.state.title && this.state.description) {
+        if (this.state.name && this.state.winery) {
           let fav = {
             wine: this.state.wine,
-            title: this.state.title,
-            description: this.state.description,
-            synopsis: this.state.synopsis,
-            image: this.state.image,
+            wine2: this.state.wine2,
+            wine3: this.state.wine3,
+            wine4: this.state.wine4,
+            wine5: this.state.wine5,
             date: this.state.date
           }
 
@@ -152,7 +152,7 @@ class UserPage extends Component {
         <Col size="lg-6 md-6 sm-12">
             
             <Jumbotron>
-              <div class="img"></div>
+              <div className="img"></div>
               <Container>
               <h3>My Messages</h3>
             
@@ -180,7 +180,7 @@ class UserPage extends Component {
         </Col>
         <Col size="lg-6 md-6 sm-12">
         <Jumbotron>
-        <div class="img"></div>
+        <div className="img"></div>
         <Container>
               <h3>Wine Favorites</h3>
             
@@ -188,11 +188,11 @@ class UserPage extends Component {
               <List>
                 {this.state.favs.map(fav => (
                   <ListItem key={fav._id}>
-                    <Link to={"/favs/" + fav._id}>
+                    {/* <Link to={"/favs/" + fav._id}> */}
                       <strong>                        
-                        {fav.wine} {fav.title} by {fav.description}        
+                        {fav.wine} <hr /> {fav.wine2} <hr /> {fav.wine3} <hr /> {fav.wine4}  
                       </strong>
-                    </Link>
+                    {/* </Link> */}
                     <DeleteBtn onClick={() => this.deleteFav(fav._id)} />
                   </ListItem>
                 ))}

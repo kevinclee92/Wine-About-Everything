@@ -196,7 +196,7 @@ class EnhancedTable extends React.Component {
     order: 'asc',
     orderBy: 'wine',
     selected: [],
-    data: [],
+    data: {},
     page: 0,
     rowsPerPage: 5,
     user: {},
@@ -274,7 +274,9 @@ handleClick = (event, wine) => {
 handleFavoriteClick = event => {
   event.preventDefault();
   let fav = {
-    wine: this.state.selected
+    wine: this.state.selected[0],
+    wine2: this.state.selected[1],
+    wine3: this.state.selected[2]
   }
 
   let favs = this.state.favs

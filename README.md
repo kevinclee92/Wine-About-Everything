@@ -18,11 +18,14 @@ Wine About Everything (WaE) is a full-stack web-app that where users will come t
 * [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 * [Create-React-App](https://github.com/facebook/create-react-app) - Create React App is an officially supported way to create single-page React applications. It offers a modern build setup with no configuration.
 * [Body-Parser](https://github.com/expressjs/body-parser) - The Node.js body parsing middleware used
+* [Cookie-Parser](https://www.npmjs.com/package/cookie-parser) - The Node.js cookie parsing middleware used
 * [Material-UI](https://material-ui.com/) - The web framework used
 * [Bootstrap](https://getbootstrap.com/) - A web Framework used
 * [Visual Studio Code](https://code.visualstudio.com/) - The text editor used
 * [CSS: Cascading Style Sheets](https://developer.mozilla.org/en-US/docs/Web/CSS) - The stylesheet language used
 * [Passport.js](http://www.passportjs.org/) - The authentication middleware for Node.js used
+* [MongoDB](https://www.mongodb.com/) - scalable and flexible NoSQL document database
+* [Mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
 
 ## Authors 
 
