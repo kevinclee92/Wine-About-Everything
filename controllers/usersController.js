@@ -40,6 +40,14 @@ module.exports = {
         res.json(dbModel)})
       .catch(err => res.status(422).json(err));
   },
+  updateByUsername: function(req, res) {
+    db.User
+      .findOneAndUpdate({ username: req.params.username }, req.body, {new: true})
+      .then(dbModel => {
+        console.log("dbModel Log", dbModel);        
+        res.json(dbModel)})
+      .catch(err => res.status(422).json(err));
+  },
   remove: function(req, res) {
     db.User
       .findById({ _id: req.params.id })

@@ -39,6 +39,7 @@ router.route("/")
 // router.route("/notes").get(usersController.)
 
 router.route("/:username").get(usersController.findByUsername);
+router.route("/:username").put(usersController.updateByUsername);
 
 // Matches with "/api/users/:id"
 router
