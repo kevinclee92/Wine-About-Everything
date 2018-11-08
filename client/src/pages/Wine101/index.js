@@ -1,6 +1,5 @@
 import React from 'react';
 import img from '../../images/foodandwinepairing.jpg'
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import imgThree from '../../images/winestats.jpg';
 import imgFour from '../../images/winestats2.jpg';
@@ -8,7 +7,6 @@ import imgFive from '../../images/winestats3.jpg';
 import imgSix from '../../images/winestats4.jpg';
 import imgTen from '../../images/happyhour.jpg';
 import imgEleven from '../../images/smallbottle.jpg';
-import imgLogo from '../../images/logo_transparent.png';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
@@ -76,7 +74,7 @@ class SimpleGrow extends React.Component {
             {...(checked ? { timeout: 1000 } : {})}
           >
             <Paper elevation={4} className={classes.paper}>
-                <img src={imgFour}/>
+                <img src={imgFour} alt='wine101Img1'/>
                 <svg className={classes.svg}>
                 <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
               </svg>
@@ -88,7 +86,7 @@ class SimpleGrow extends React.Component {
             {...(checked ? { timeout: 1000 } : {})}
           >
             <Paper elevation={4} className={classes.paper}>
-                <img src={imgFive}/>
+                <img src={imgFive} alt='wine101Img2'/>
                 <svg className={classes.svg}>
                 <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
               </svg>
@@ -104,7 +102,7 @@ class SimpleGrow extends React.Component {
             {...(checked ? { timeout: 1000 } : {})}
           >
             <Paper elevation={4} className={classes.paper}>
-                <img src={imgThree}/>
+                <img src={imgThree} alt='wine101Img3'/>
                 <svg className={classes.svg}>
                 <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
               </svg>
@@ -116,7 +114,7 @@ class SimpleGrow extends React.Component {
             {...(checked ? { timeout: 1000 } : {})}
           >
             <Paper elevation={4} className={classes.paper}>
-                <img src={imgSix}/>
+                <img src={imgSix} alt='wine101Img4'/>
                 <svg className={classes.svg}>
                 <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
               </svg>
@@ -133,7 +131,7 @@ class SimpleGrow extends React.Component {
             {...(checked ? { timeout: 1000 } : {})}
           >
             <Paper elevation={4} className={classes.paper}>
-                <img src={imgTen}/>
+                <img src={imgTen} alt='wine101Img5'/>
                 <svg className={classes.svg}>
                 <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
               </svg>
@@ -145,7 +143,7 @@ class SimpleGrow extends React.Component {
             {...(checked ? { timeout: 1000 } : {})}
           >
             <Paper elevation={4} className={classes.paper}>
-                <img src={imgEleven}/>
+                <img src={imgEleven} alt='wine101Img6'/>
                 <svg className={classes.svg}>
                 <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
               </svg>
@@ -162,7 +160,7 @@ class SimpleGrow extends React.Component {
             {...(checked ? { timeout: 1000 } : {})}
           >
             <Paper elevation={4} className={classes.paper}>
-                <img src={img}/>
+                <img src={img} alt='wine101Img7'/>
                 <svg className={classes.svg}>
                 <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
               </svg>
